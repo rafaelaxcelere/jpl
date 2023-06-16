@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="Ccm_view_filter" model="ir.ui.view">
+        <field name="name">Ccm_filter</field>
+        <field name="model">jpl_prod.ccm_sql_table</field>
+        <field name="arch" type="xml">
+            <search string="Ccm Search">
+                <filter name="current_month" string="Mes Actual" domain="[('date', '&gt;=', datetime.datetime.now().strftime('%Y-%m-01'))]" />
+            </search>
+        </field>
+        </record>
+
+        <record model="ir.ui.view" id="jpl_ccm_pivot_view">
+            <field name="name">CCM</field>
+            <field name="model">jpl_prod.ccm_sql_table</field>
+            <field name="arch" type="xml">
+
+                <pivot string="ccmview" disable_linking="True" options='{"load_defaults":"true","lower_threshold":0,"upper_threshold":1,"lower_bg_color":"white","upper_bg_color":"withe","lower_font_color":"Green", "upper_font_color":"Red"}'>
+                    <field name="id_area" type="col">, %</field>
+                    <field name="id_division" type="col">, %</field>
+                    <field name="id_center" type="col">Hours, %</field>
+                    <field name="id_plant" type="col">, %</field>
+                    <field name="date" interval="month" type="col">Date</field>
+                    <field name="type_process"  type="row">Date</field>
+
+                    <field name="dest_hours" type="measure">Horas</field>
+                    <field name="units" type="measure">Unidades</field>
+                    <field name="productivity" type="measure">Uds/h</field>
+                    <field name="std_hours" type="measure">Horas</field>
+                    <field name="wast_hours" type="measure" highlight="true">Hours</field>
+                    <field name="efficiency" type="measure">Hours</field>
+
+                </pivot>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="ccm_list_action">
+            <field name="name">CCM</field>
+            <field name="res_model">jpl_prod.ccm_sql_table</field>
+            <field name="view_mode">pivot</field>
+            <field name="context">{'search_default_current_month': 1}</field>
+            <field name="view_id" ref="jpl_ccm_pivot_view"></field>
+        </record>
+
+
+        <record id="oee_view_filter" model="ir.ui.view">
+        <field name="name">oee_filter</field>
+        <field name="model">jpl_prod.oee_sql_table</field>
+        <field name="arch" type="xml">
+            <search string="oee Search">
+                <filter name="current_month" string="Mes Actual" domain="[('date', '&gt;=', datetime.datetime.now().strftime('%Y-%m-01'))]" />
+            </search>
+        </field>
+        </record>
+
+        <record model="ir.ui.view" id="jpl_reporting_pivot_view4">
+            <field name="name">Reporte Eficiencia General</field>
+            <field name="model">jpl_prod.oee_sql_table</field>
+            <field name="arch" type="xml">
+
+                <pivot string="TEST4" disable_linking="True" options='{"load_defaults":"true","lower_threshold":0,"upper_threshold":3,"lower_bg_color":"white","upper_bg_color":"withe","lower_font_color":"Red", "upper_font_color":"Green"}'>
+                    <field name="date" interval="month" type="row">Date</field>
+
+                    <field name="id_area" type="col">, %</field>
+                    <field name="id_division" type="col">, %</field>
+                    <field name="id_center" type="col">Hours, %</field>
+                    <field name="id_plant" type="col">, %</field>
+
+                    <field name="dest_time" type="measure">Hours</field>
+                    <field name="hours_difference" type="measure">Hours</field>
+                    <field name="hours_declared" type="measure">Hours</field>
+                    <field name="not_op_time" type="measure">Hours</field>
+                    <field name="op_time" type="measure">Hours</field>
+                    <field name="waste_time" type="measure">Hours</field>
+                    <field name="std_time" type="measure">Hours</field>
+                    <field name="scarp_time" type="measure">Hours</field>
+                    <field name="added_val_time" type="measure">Hours</field>
+                    <field name="disp" type="measure" >%</field>
+                    <field name="perf" type="measure" >%</field>
+                    <field name="qlty" type="measure" >%</field>
+                    <field name="oee" type="measure" >%</field>
+                    <field name="oee_objective" type="measure">%</field>
+                    <field name="fulfillment_oee" type="measure" highlight="true">%</field>
+
+                </pivot>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="reporting_list_action4">
+            <field name="name">Reporte Eficiencia General</field>
+            <field name="res_model">jpl_prod.oee_sql_table</field>
+            <field name="view_mode">pivot</field>
+            <field name="context">{'search_default_current_month': 1}</field>
+            <field name="view_id" ref="jpl_reporting_pivot_view4"></field>
+        </record>
+
+
+        <record id="process_view_filter" model="ir.ui.view">
+        <field name="name">process_filter</field>
+        <field name="model">jpl_prod.efficiency_sql_table</field>
+        <field name="arch" type="xml">
+            <search string="process Search">
+                <filter name="current_month" string="Mes Actual" domain="[('date', '&gt;=', datetime.datetime.now().strftime('%Y-%m-01'))]" />
+            </search>
+        </field>
+        </record>
+
+        <record model="ir.ui.view" id="jpl_reporting_pivot_view5">
+            <field name="name">Reporting Eficiencia por Process</field>
+            <field name="model">jpl_prod.efficiency_sql_table</field>
+            <field name="arch" type="xml">
+                <pivot string="TEST5" disable_linking="True" options='{"load_defaults":"true","lower_threshold":0,"upper_threshold":1,"lower_bg_color":"white","upper_bg_color":"withe","lower_font_color":"Red", "upper_font_color":"Green"}'>
+                    <field name="id_area" type="col">Area</field>
+                    <field name="id_division" type="col">Division</field>
+                    <field name="id_center" type="col">Center</field>
+                    <field name="id_plant" type="col">Plant</field>
+                    <field name="date" interval="month" type="row">Date</field>
+                    <field name="id_process" type="col">, %</field>
+
+                    <field name="op_time" type="measure">Hours, %</field>
+                    <field name="waste_time" type="measure">Hours, %</field>
+                    <field name="added_val_time" type="measure">Hours, %</field>
+                    <field name="uds" type="measure">Unidades</field>
+                    <field name="eff_process_obj" type="measure">Hours, %</field>
+                    <field name="eff_process" type="measure">Hours, %</field>
+                    <field name="fulfillment_perf" type="measure" highlight="true">Hours, %</field>
+                    <field name="uds_h" type="measure">Uds/h</field>
+
+
+                </pivot>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="reporting_list_action5">
+            <field name="name">Reporting Eficiencia por Process</field>
+            <field name="res_model">jpl_prod.efficiency_sql_table</field>
+            <!--<field name="view_type">form</field>-->
+            <field name="view_mode">pivot</field>
+            <field name="context">{'search_default_current_month': 1}</field>
+            <field name="view_id" ref="jpl_reporting_pivot_view5"></field>
+        </record>
+
+        <record id="employee_efficiency_view_filter" model="ir.ui.view">
+        <field name="name">employee_efficiency_filter</field>
+        <field name="model">jpl_prod.employee_efficiency_sql_table</field>
+        <field name="arch" type="xml">
+            <search string="employee efficiency Search">
+                <filter name="current_month" string="Mes Actual" domain="[('date', '&gt;=', datetime.datetime.now().strftime('%Y-%m-01'))]" />
+            </search>
+        </field>
+        </record>
+
+        <record model="ir.ui.view" id="jpl_reporting_employee_efficiency">
+            <field name="name">Reporting Eficiencia por Empleado</field>
+            <field name="model">jpl_prod.employee_efficiency_sql_table</field>
+            <field name="arch" type="xml">
+                <pivot string="TEST5" disable_linking="True">
+
+                    <field name="id_plant" type="col">Plant</field>
+                    <field name="date" interval="month" type="col">Date</field>
+                    <field name="id_employee" type="row">, %</field>
+
+                    <field name="dest_time" type="measure">Hours, %</field>
+                    <field name="std_time" type="measure">Hours, %</field>
+                    <field name="units" type="measure">Unidades</field>
+                    <field name="uds_h" type="measure">Uds/h</field>
+                    <field name="perf" type="measure">H%</field>
+                </pivot>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="reporting_employee_efficiency_action">
+            <field name="name">Reporting Eficiencia por Empleado</field>
+            <field name="res_model">jpl_prod.employee_efficiency_sql_table</field>
+            <!--<field name="view_type">form</field>-->
+            <field name="view_mode">pivot</field>
+            <field name="context">{'search_default_current_month': 1}</field>
+            <field name="view_id" ref="jpl_reporting_employee_efficiency"></field>
+        </record>
+
+        <record id="waste_view_filter" model="ir.ui.view">
+        <field name="name">waste_filter</field>
+        <field name="model">jpl_prod.waste_sql_table</field>
+        <field name="arch" type="xml">
+            <search string="waste Search">
+                <filter name="current_month" string="Mes Actual" domain="[('date', '&gt;=', datetime.datetime.now().strftime('%Y-%m-01'))]" />
+            </search>
+        </field>
+        </record>
+
+        <record model="ir.ui.view" id="waste_time_reporting_pivot">
+            <field name="name">Analisis de Perdidas</field>
+            <field name="model">jpl_prod.waste_sql_table</field>
+            <field name="arch" type="xml">
+
+                <pivot string="NotProductiveTimeReporting" disable_linking="True" >
+                    <field name="id_area" type="row">, %</field>
+                    <field name="id_division" type="row">Hours, %</field>
+                    <field name="id_center" type="row">Hours, %</field>
+                    <field name="id_plant" type="row">Hours, %</field>
+                    <field name="name" type="row">Hours, %</field>
+                    
+                    <field name="date" interval="month" type="col">Date</field>
+
+                    <field name="waste_time" type="measure">H</field>
+                </pivot>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="Not_productive_time_view">
+            <field name="name">Analisis de Perdidas</field>
+            <field name="res_model">jpl_prod.waste_sql_table</field>
+            <field name="view_mode">pivot,graph</field>
+            <field name="context">{'search_default_current_month': 1}</field>
+            <field name="view_id" ref="waste_time_reporting_pivot"></field>
+        </record>
+
+
+
+
+        <record model="ir.ui.view" id="oee_graphics">
+            <field name="name">GraphicReporting</field>
+            <field name="model">jpl_prod.oee_graphic</field>
+            <field name="arch" type="xml">
+                <graph string="graphic" type="bar">
+
+                     <field name="plant" type="row">, %</field>
+
+                    <field name="name" type="col">, %</field>
+                    <field name="qty" type="measure">, %</field>
+                    <field name="wasted_qty" type="measure">, %</field>
+
+                </graph>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="graphic_table">
+            <field name="name">graphics</field>
+            <field name="res_model">jpl_prod.oee_graphic</field>
+            <!--<field name="view_type">form</field>-->
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="oee_graphics"></field>
+        </record>
+
+
+
+        <record model="ir.ui.view" id="oee_day_graphic_view">
+            <field name="name">OEE por dias</field>
+            <field name="model">jpl_prod.oee_graphic_day</field>
+            <field name="arch" type="xml">
+                <graph string="OeeXDay" type="line">
+                    <field name="date" interval="day" type="col"/>
+                    <field name="type" type="col"/>
+                    <field name="resultado" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="oee_day_graphic_action">
+            <field name="name">OEE por dias</field>
+            <field name="res_model">jpl_prod.oee_graphic_day</field>
+            <!--<field name="view_type">form</field>-->
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="oee_day_graphic_view"></field>
+        </record>
+
+
+
+        <record model="ir.ui.view" id="oee_week_graphic_view">
+            <field name="name">OEE por semanas</field>
+            <field name="model">jpl_prod.oee_graphic_week</field>
+            <field name="arch" type="xml">
+                <graph string="OeeXWeek" type="line">
+                    <field name="week" type="col"/>
+                    <field name="type" type="col"/>
+                    <field name="resultado" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="oee_week_graphic_action">
+            <field name="name">OEE por semanas</field>
+            <field name="res_model">jpl_prod.oee_graphic_week</field>
+            <!--<field name="view_type">form</field>-->
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="oee_week_graphic_view"></field>
+        </record>
+
+
+
+
+        <record model="ir.ui.view" id="oee_month_graphic_view">
+            <field name="name">OEE por meses</field>
+            <field name="model">jpl_prod.oee_graphic_month</field>
+            <field name="arch" type="xml">
+                <graph string="OeeXWeek" type="line">
+                    <field name="month" type="col"/>
+                    <field name="type" type="col"/>
+                    <field name="resultado" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="oee_month_graphic_action">
+            <field name="name">OEE por meses</field>
+            <field name="res_model">jpl_prod.oee_graphic_month</field>
+            <!--<field name="view_type">form</field>-->
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="oee_month_graphic_view"></field>
+        </record>
+
+        <menuitem id="Reporting_menu" name="Reporting" parent="jpl_prod_menu"
+                  groups="master_group_user_id,viewer_group_user_id,operator_group_user_id" sequence="2"/>
+
+        <menuitem id="ccm_menu" name="CCM" parent="Reporting_menu" action="ccm_list_action"
+                  sequence="22"/>
+
+        <menuitem id="reporting_menu_4" name="OEE Reporting" parent="Reporting_menu" action="reporting_list_action4"
+                  sequence="23"/>
+
+         <menuitem id="reporting_menu_5" name="Efficiencia por proceso" parent="Reporting_menu" action="reporting_list_action5"
+                  sequence="24"/>
+
+        <menuitem id="employee_efficiency" name="Efficiencia por Empleado" parent="Reporting_menu" action="reporting_employee_efficiency_action"
+                  sequence="25"/>
+
+        <menuitem id="NotProductiveTime" name="Análisis Pérdidas" parent="Reporting_menu" action="Not_productive_time_view"
+                  sequence="26"/>
+
+        <menuitem id="graphics" name="Gráficos Eficiencia" parent="Reporting_menu" action="oee_day_graphic_action"
+                  sequence="27"/>
+
+        <menuitem id="oee_day_reporting" name="OEE por dias" parent="graphics" action="oee_day_graphic_action"
+                  sequence="1"/>
+
+         <menuitem id="oee_week_reporting" name="OEE por semanas" parent="graphics" action="oee_week_graphic_action"
+                  sequence="2"/>
+
+        <menuitem id="oee_month_reporting" name="OEE por meses" parent="graphics" action="oee_month_graphic_action"
+                  sequence="3"/>
+
+        <menuitem id="productivity_waste" name="Perdidas Productivas" parent="graphics" action="graphic_table"
+                  sequence="4"/>
+
+
+    </data>
+</odoo>

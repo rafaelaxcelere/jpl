@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+        <report
+            id="report_jpl_prod"
+            model="jpl_prod.reg_table"
+            string="JPL Efficiency Report"
+            name="jpl_prod.report_overview"
+            file="jpl_prod.report_overview"
+            report_type="qweb-html"/>
+
+        <template id="report_overview">
+            <t t-call="report.html_container">
+                <!-- REMEMBER, docs is the selected records either in form view or checked in list view (usually). So the line below says use the following template for each record that has been selected. -->
+                <t t-foreach="docs" t-as="doc">
+                    <t>
+                     <div class="page">
+                        <h1>Report For <t t-esc="doc.name"/></h1>
+                        <table>
+                         <tr>
+                            <th>Id</th>
+                            <th>Date</th>
+                            <th>Shift</th>
+                             <th>Total hours presence</th>
+                         </tr>
+
+                         <t t-foreach="doc.subrecord" t-as="o">
+                             <tr>
+                                 <td><t t-esc="o.id"/></td>
+                                 <td><t t-esc="o.date"/></td>
+                                 <td><t t-esc="o.shift"/></td>
+                                 <td><t t-esc="o.total_hours_presence"/></td>
+                             </tr>
+                         </t>
+
+                        </table>
+                     </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

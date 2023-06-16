@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="process0" model="jpl_prod.process_table">
+            <field name="process_name">PROCESS_1</field>
+            <field name="elementary_unit">BOX</field>
+            <field name="standard_time">1.0</field>
+            <field name="description">PROCESS_1</field>
+        </record>
+        <record id="process1" model="jpl_prod.process_table">
+            <field name="process_name">PROCESS_2</field>
+            <field name="elementary_unit">PALE</field>
+            <field name="standard_time">3.5</field>
+            <field name="description">PROCESS_2</field>
+        </record>
+    </data>
+</odoo>

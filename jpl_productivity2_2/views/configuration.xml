@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <menuitem id="configuration_menu" name="Configuration" parent="jpl_prod_menu" groups="configuration_group_user_id,manipulation_group_user_id,master_group_user_id,hour_process_group_user_id" sequence="4"/> <!---->
+        <menuitem id="company_configuration_menu" name="Conf.Compañia" parent="configuration_menu" groups="master_group_user_id" sequence="4"/>
+        <record id="area_list_form" model="ir.ui.view">
+            <field name="name">Area</field>
+            <field name="model">jpl_prod.area_table</field>
+            <field name="arch" type="xml">
+                <tree string="Areas List">
+                    <field name="name"/>
+                    <field name="responsable"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="area_table_form" model="ir.ui.view">
+            <field name="name">Area Form</field>
+            <field name="model">jpl_prod.area_table</field>
+            <field name="arch" type="xml">
+                <form string="Areas List">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" groups="hr.group_hr_user"
+                                    class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                    options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="Area's Name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="responsable"/>
+                            </group>
+                        </group>
+                        <group string="Divisions">
+                            <field name="related_division" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="area_list_action">
+            <field name="name">Areas</field>
+            <field name="res_model">jpl_prod.area_table</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first Area
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="configuration_area_menu" name="Areas" parent="company_configuration_menu"
+                  action="area_list_action" sequence="10"/>
+
+        <record id="division_list_form" model="ir.ui.view">
+            <field name="name">Division</field>
+            <field name="model">jpl_prod.division_table</field>
+            <field name="arch" type="xml">
+                <tree string="Divisions List">
+                    <field name="name"/>
+                    <field name="responsable"/>
+                    <field name="related_area"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="division_form" model="ir.ui.view">
+            <field name="name">Division Form</field>
+            <field name="model">jpl_prod.division_table</field>
+            <field name="arch" type="xml">
+                <form string="Divisions List">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" groups="hr.group_hr_user"
+                                    class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                    options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="Division's Name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="responsable"/>
+                            </group>
+                        </group>
+                        <group string="Areas">
+                            <field name="related_area" nolabel="1"/>
+                        </group>
+                        <group string="Centers">
+                            <field name="related_center" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="division_list_action">
+            <field name="name">Divisions</field>
+            <field name="res_model">jpl_prod.division_table</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first Division
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="configuration_division_menu" name="Divisiones" parent="company_configuration_menu"
+                  action="division_list_action" sequence="11"/>
+
+        <record id="center_list_form" model="ir.ui.view">
+            <field name="name">Center</field>
+            <field name="model">jpl_prod.center_table</field>
+            <field name="arch" type="xml">
+                <tree string="Centers List">
+                    <field name="name"></field>
+                    <field name="responsable"></field>
+                    <field name="related_division"></field>
+                </tree>
+            </field>
+        </record>
+
+        <record id="center_form" model="ir.ui.view">
+            <field name="name">Center Form</field>
+            <field name="model">jpl_prod.center_table</field>
+            <field name="arch" type="xml">
+                <form string="Centers List">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" groups="hr.group_hr_user"
+                                    class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                    options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="Center's Name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="responsable"/>
+                            </group>
+                        </group>
+                        <group string="Divisions">
+                            <field name="related_division" nolabel="1"/>
+                        </group>
+                        <group string="Plants">
+                            <field name="related_plant" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="center_list_action">
+            <field name="name">Centers</field>
+            <field name="res_model">jpl_prod.center_table</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first Center
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="configuration_center_menu" name="Centros" parent="company_configuration_menu"
+                  action="center_list_action" sequence="12"/>
+
+        <record id="plant_list_form" model="ir.ui.view">
+            <field name="name">Plant</field>
+            <field name="model">jpl_prod.plant_table</field>
+            <field name="arch" type="xml">
+                <tree string="Plants List">
+                    <field name="name"/>
+                    <field name="responsable"/>
+                    <field name="related_center"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="plant_view_form" model="ir.ui.view">
+            <field name="name">Plant Form</field>
+            <field name="model">jpl_prod.plant_table</field>
+            <field name="arch" type="xml">
+                <form string="Plants Form">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" groups="hr.group_hr_user"
+                                    class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                    options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="Plant's Name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="code_plant"/>
+                                <field name="related_center"/>
+                                <field name="responsable"/>
+                                <field name="cost"/>
+                                <field name="gm_objective"/>
+                                <field name="tz"/>
+                                <field name="active_emails"/>
+
+                            </group>
+                            <group>
+                                <field name="oee_objective"/>
+                                <field name="oee_limit"/>
+                                <field name="disp_objective"/>
+                                <field name="start_day_hour"/>
+                                <field name="start_day_minute"/>
+                                <field name="start_day_6am"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Manual viewers added">
+                                <field name="viewers" nolabel="1"/>
+                            </page>
+                            <page string="Users related plan">
+                                <field name="viewers2" nolabel="1"/>
+                            </page>
+                            <page string="Related process">
+                                <field name="related_processes" nolabel="1"/>
+                            </page>
+                            <page string="Related process hours">
+                                <field name="related_processesperhours" nolabel="1"/>
+                            </page>
+                            <page string="Related inefficiences">
+                                <field name="related_inefficiences" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="plant_list_action">
+            <field name="name">Plants</field>
+            <field name="res_model">jpl_prod.plant_table</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first Plant
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="configuration_plant_menu" name="Conf. Planta" groups="configuration_group_user_id,manipulation_group_user_id,master_group_user_id,hour_process_group_user_id" parent="configuration_menu"
+                  action="plant_list_action" sequence="13"/>
+
+        <record id="process_list_form" model="ir.ui.view">
+            <field name="name">Process</field>
+            <field name="model">jpl_prod.process_table</field>
+            <field name="arch" type="xml">
+                <tree string="Process List">
+                    <field name="related_plant"/>
+                    <field name="name"/>
+                    <field name="id_cat"/>
+                    <field name="id_sub_cat"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="process_view_form" model="ir.ui.view">
+            <field name="name">Process Form</field>
+            <field name="model">jpl_prod.process_table</field>
+            <field name="arch" type="xml">
+                <form string="Process List">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" groups="hr.group_hr_user"
+                                    class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                    options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name"  placeholder="Process's Name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="related_plant" />
+                                <field name="id_cat"/>
+                                <field name="id_sub_cat"/>
+                                <field name="ref_1"/>
+                                <field name="ref_2"/>
+                            </group>
+                            <group>
+                                <field name="effxprocess_objective"/>
+                                <field name="description"/>
+                            </group>
+                            <group>
+                                <field name="related_tasks"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="process_list_action">
+            <field name="name">Processes</field>
+            <field name="res_model">jpl_prod.process_table</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first Process
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="configuration_processes_menu" name="Procesos" groups="configuration_group_user_id,manipulation_group_user_id,master_group_user_id" parent="configuration_plant_menu"
+                  action="process_list_action" sequence="130"/>
+
+        <record id="task_list_form" model="ir.ui.view">
+            <field name="name">Tasks</field>
+            <field name="model">jpl_prod.task_table</field>
+            <field name="arch" type="xml">
+                <tree string="Task List">
+                    <field name="name"/>
+                    <field name="standard_time"/>
+                    <field name="elementary_unit"/>
+                    <field name="id_related_process"/>
+                    <field name="id_related_plant"/>
+                    <field name="form_order"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="task_view_form" model="ir.ui.view">
+            <field name="name">Tasks Form</field>
+            <field name="model">jpl_prod.task_table</field>
+            <field name="arch" type="xml">
+                <form string="Task Form">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" groups="hr.group_hr_user"
+                                    class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                    options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="Task's Name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="standard_time"/>
+                                <field name="elementary_unit"/>
+                                <field name="id_related_process"/>
+                            </group>
+                            <group>
+                                <field name="id_related_plant"/>
+                                <field name="price"/>
+                                <field name="description"/>
+                                <field name="form_order"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="task_list_action">
+            <field name="name">Tasks</field>
+            <field name="res_model">jpl_prod.task_table</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first Process
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="configuration_task_menu" name="Tareas" parent="configuration_processes_menu"
+                  action="task_list_action" sequence="131" groups="configuration_group_user_id,master_group_user_id"/>
+
+
+
+
+        <record id="hourprocess_list_form" model="ir.ui.view">
+            <field name="name">Hourprocess</field>
+            <field name="model">jpl_prod.hourprocess_table</field>
+            <field name="arch" type="xml">
+                <tree string="Hour Process List">
+                    <field name="related_plant"/>
+                    <field name="name"/>
+                    <field name="id_cat"/>
+                    <field name="id_sub_cat"/>
+                    <field name="price"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hourprocess_view_form" model="ir.ui.view">
+            <field name="name">Hourprocess Form</field>
+            <field name="model">jpl_prod.hourprocess_table</field>
+            <field name="arch" type="xml">
+                <form string="Hour Process Form">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" groups="hr.group_hr_user"
+                                    class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                    options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="Hour Process's Name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="related_plant"/>
+                                <field name="price"/>
+                            </group>
+                            <group>
+                                <field name="id_cat"/>
+                                <field name="id_sub_cat"/>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="hourprocess_list_action">
+            <field name="name">Hours Processes</field>
+            <field name="res_model">jpl_prod.hourprocess_table</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first Process
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="Hourprocess_menu" name="Procesos a Horas" parent="configuration_plant_menu" groups="configuration_group_user_id,master_group_user_id,hour_process_group_user_id"
+                  action="hourprocess_list_action" sequence="140"/>
+
+        <record id="inneficiencies_list_form" model="ir.ui.view">
+            <field name="name">Inefficiences</field>
+            <field name="model">jpl_prod.inef_table</field>
+            <field name="arch" type="xml">
+                <tree string="Inefficiences List">
+                    <field name="related_plant"/>
+                    <field name="name"/>
+                    <field name="price"/>
+                    <field name="id_cat"/>
+                    <field name="id_sub_cat"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="inneficiencies_view_form" model="ir.ui.view">
+            <field name="name">Inefficiences Form</field>
+            <field name="model">jpl_prod.inef_table</field>
+            <field name="arch" type="xml">
+                <form string="Inefficiences form">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" groups="hr.group_hr_user"
+                                    class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                    options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="Not Productive's Name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="related_plant"/>
+                                <field name="id_cat"/>
+                                <field name="id_sub_cat"/>
+                            </group>
+                            <group>
+                                <field name="price"/>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="inefficiencies_list_action">
+            <field name="name">Inefficiencies</field>
+            <field name="res_model">jpl_prod.inef_table</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first Inefficiency
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem id="configuration_inefficiencies_menu" name="Tiempos No Productivos" parent="configuration_plant_menu" groups="configuration_group_user_id,master_group_user_id"
+                  action="inefficiencies_list_action" sequence="150"/>
+
+        <record id="prod_waste_list_form" model="ir.ui.view">
+            <field name="name">Productivity Waste</field>
+            <field name="model">jpl_prod.productivity_waste_table</field>
+            <field name="arch" type="xml">
+                <tree string="Productivity Waste List">
+                    <field name="name"/>
+                    <field name="waste_standard_time"/>
+                    <field name="elementary_unit"/>
+                    <field name="id_process"/>
+                    <field name="price"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="prod_waste_form_form" model="ir.ui.view">
+            <field name="name">Productivity Waste Form</field>
+            <field name="model">jpl_prod.productivity_waste_table</field>
+            <field name="arch" type="xml">
+                <form string="Productivity Waste Form">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" groups="hr.group_hr_user"
+                                    class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                    options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="Productivity waste's Name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="waste_standard_time"/>
+                                <field name="elementary_unit"/>
+                                <field name="id_process"/>
+                            </group>
+                            <group>
+                                <field name="id_related_plant"/>
+                                <field name="price"/>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="productivity_waste_list_action">
+            <field name="name">Productivity_waste</field>
+            <field name="res_model">jpl_prod.productivity_waste_table</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first Process
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="configuration_productivity_waste_menu" name="Perdidas Productivas" parent="configuration_processes_menu"
+                  action="productivity_waste_list_action" sequence="133" groups="configuration_group_user_id,master_group_user_id"/>
+
+
+
+        <record model="ir.actions.act_window" id="category_inefficiencies_list_action">
+            <field name="name">Inefficiency Categories</field>
+            <field name="res_model">jpl_prod.inef_category_table</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first inefficiency category
+                </p>
+            </field>
+        </record>
+
+
+        <!-- <menuitem id="configuration_category_inefficiencies_menu" name="Category Inefficiencies"
+                  parent="configuration_inefficiencies_menu" action="category_inefficiencies_list_action" sequence="49"/> -->
+
+        <record model="ir.actions.act_window" id="category_process_list_action">
+            <field name="name">Process_Categories</field>
+            <field name="res_model">jpl_prod.process_category_table</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first inefficiency category
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem id="configuration_category_process_menu" name="Categorias"
+                  parent="configuration_plant_menu" groups="configuration_group_user_id,master_group_user_id" action="category_process_list_action" sequence="48"/>
+
+        <record model="ir.actions.act_window" id="subcategory_process_list_action">
+            <field name="name">Process_Sub_Categories</field>
+            <field name="res_model">jpl_prod.process_sub_category_table</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first Subcategory
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem id="configuration_subcategory_process_menu" name="Subcategorias"
+                  parent="configuration_plant_menu" groups="configuration_group_user_id,master_group_user_id" action="subcategory_process_list_action" sequence="49"/>
+
+
+        <menuitem id="cost_configuration_menu" name="Conf.Costes" parent="configuration_menu" groups="master_group_user_id" sequence="23"/>
+
+        <record id="employee_cat_list_form" model="ir.ui.view">
+            <field name="name">Categoria Empleados</field>
+            <field name="model">jpl_prod.employee_category</field>
+            <field name="arch" type="xml">
+                <tree string="Lista Categorias Empleados">
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="employee_cat_view_form" model="ir.ui.view">
+            <field name="name">Categoria Empleados Form</field>
+            <field name="model">jpl_prod.employee_category</field>
+            <field name="arch" type="xml">
+                <form string="Formulario Categorias Empleados">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" groups="hr.group_hr_user"
+                                    class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                    options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="Employee Category's Name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="employee_cat_list_action">
+            <field name="name">Categoria Empleado</field>
+            <field name="res_model">jpl_prod.employee_category</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Crea la primera categoria de empleado
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="employee_cat_menu" name="Categorias Empleados" parent="cost_configuration_menu"
+                  action="employee_cat_list_action" sequence="133"/>
+
+        <record id="employee_status_list_form" model="ir.ui.view">
+            <field name="name">Estatus Empleados</field>
+            <field name="model">jpl_prod.employee_status</field>
+            <field name="arch" type="xml">
+                <tree string="Lista Estatus Empleados">
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="employee_status_view_form" model="ir.ui.view">
+            <field name="name">Estatus Empleados Form</field>
+            <field name="model">jpl_prod.employee_status</field>
+            <field name="arch" type="xml">
+                <form string="Formulario Estatus Empleados">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" groups="hr.group_hr_user"
+                                    class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                    options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="Employee status's Name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="employee_status_list_action">
+            <field name="name">Estatus Empleado</field>
+            <field name="res_model">jpl_prod.employee_status</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Crea el primer estatus del empleado
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="employee_status_menu" name="Estatus Empleados" parent="cost_configuration_menu"
+                  action="employee_status_list_action" sequence="134"/>
+
+        <record id="cost_table_list_form" model="ir.ui.view">
+            <field name="name">Tabla de Costes</field>
+            <field name="model">jpl_prod.cost_table</field>
+            <field name="arch" type="xml">
+                <tree string="Tabla de Costes">
+                    <field name="id_plant"/>
+                    <field name="id_category_employee"/>
+                    <field name="id_status_employee"/>
+                    <field name="month"/>
+                    <field name="year"/>
+                    <field name="cost"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="cost_table_view_form" model="ir.ui.view">
+            <field name="name">Tabla de Costes Form</field>
+            <field name="model">jpl_prod.cost_table</field>
+            <field name="arch" type="xml">
+                <form string="Formulario de Costes">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" groups="hr.group_hr_user"
+                                    class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button"
+                                    options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="id_plant"/>
+                                <field name="id_category_employee"/>
+                                <field name="id_status_employee"/>
+                            </group>
+                            <group>
+                                <field name="month"/>
+                                <field name="year"/>
+                                <field name="cost"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="cost_table_list_action">
+            <field name="name">Tabla de Costes</field>
+            <field name="res_model">jpl_prod.cost_table</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Crea el primer Coste para empezar
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="cost_table_menu" name="Tabla de Costes" parent="cost_configuration_menu"
+                  action="cost_table_list_action" sequence="135"/>
+
+
+    </data>
+</odoo>

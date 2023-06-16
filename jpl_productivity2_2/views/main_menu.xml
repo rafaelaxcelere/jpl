@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <menuitem id="main_jpl_prod_menu" name="JPLEAN" sequence="1"/>
+
+        <menuitem id="jpl_prod_menu" name="JPLEAN" parent="main_jpl_prod_menu" sequence="2" />
+    </data>
+</odoo>

@@ -1,0 +1,634 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* odoo_attendance_task_extended
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0-20161020\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-26 20:30+0000\n"
+"PO-Revision-Date: 2019-03-26 16:34-0400\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#. module: odoo_attendance_task_extended
+#: model:mail.template,body_html:odoo_attendance_task_extended.template_notification_alert_2_hours
+msgid ""
+"\n"
+"            <div summary=\"o_mail_template\" style=\"padding:0px; width:600px; margin:0 auto; background: #FFFFFF repeat top /100%;color:#777777\">\n"
+"                <table cellspacing=\"0\" cellpadding=\"0\" style=\"width:600px; border-collapse:collapse; background:inherit; color:inherit\">\n"
+"                    <tbody><tr>\n"
+"                        <td valign=\"center\" width=\"200\" style=\"padding:0px 10px 5px 5px;font-size: 12px\">\n"
+"                            <img src=\"/logo.png\" style=\"padding: 0px; margin: 0px; height: auto; width: 80px;\" alt=\"${user.company_id.name}\">\n"
+"                        </td>\n"
+"                    </tr></tbody>\n"
+"                </table>\n"
+"                <table cellspacing=\"0\" cellpadding=\"0\" style=\"width:600px; border-collapse:collapse; background:inherit; color:inherit\">\n"
+"                    <tbody><tr>\n"
+"                        <td valign=\"top\" style=\"width:600px; padding:0px 10px 5px 5px;\">\n"
+"                            <div>\n"
+"                                <hr width=\"100%\" style=\"background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0;margin:15px auto;padding:0\">\n"
+"                            </div>\n"
+"                        </td>\n"
+"                    </tr></tbody>\n"
+"                </table>\n"
+"            </div>\n"
+"            <div style=\"padding:0px; width:600px; max-width:600px; margin:0 auto; background: #FFFFFF repeat top /100%;color:#777777\">\n"
+"                <table cellspacing=\"0\" cellpadding=\"0\" style=\"width:600px ;text-align:justify; margin:0 auto; border-collapse:collapse; background:inherit; color:inherit\">\n"
+"                    <tbody><tr>\n"
+"                        <td style=\"padding:0px 10px 5px 5px;font-size: 14px;\">\n"
+"                            <p>Dear ${object.name},</p><br/>\n"
+"                            <p>The following employees have exceeded in 2 hours contracted for the day: </p>\n"
+"                            <ol>\n"
+"                            % for record in ctx['records']:\n"
+"                                 <li><p>The employee <b> ${record['name']} </b> has exceeded in <b> ${record['hours']} </b> working hours contract for the <b> ${record['day']}, ${record['date']}</b>.</p></li>\n"
+"                            % endfor\n"
+"                            </ol>\n"
+"                        </td>\n"
+"                    </tr></tbody>\n"
+"                </table>\n"
+"            </div>"
+msgstr ""
+"\n"
+"            <div summary=\"o_mail_template\" style=\"padding:0px; width:600px; margin:0 auto; background: #FFFFFF repeat top /100%;color:#777777\">\n"
+"                <table cellspacing=\"0\" cellpadding=\"0\" style=\"width:600px; border-collapse:collapse; background:inherit; color:inherit\">\n"
+"                    <tbody><tr>\n"
+"                        <td valign=\"center\" width=\"200\" style=\"padding:0px 10px 5px 5px;font-size: 12px\">\n"
+"                            <img src=\"/logo.png\" style=\"padding: 0px; margin: 0px; height: auto; width: 80px;\" alt=\"${user.company_id.name}\">\n"
+"                        </td>\n"
+"                    </tr></tbody>\n"
+"                </table>\n"
+"                <table cellspacing=\"0\" cellpadding=\"0\" style=\"width:600px; border-collapse:collapse; background:inherit; color:inherit\">\n"
+"                    <tbody><tr>\n"
+"                        <td valign=\"top\" style=\"width:600px; padding:0px 10px 5px 5px;\">\n"
+"                            <div>\n"
+"                                <hr width=\"100%\" style=\"background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0;margin:15px auto;padding:0\">\n"
+"                            </div>\n"
+"                        </td>\n"
+"                    </tr></tbody>\n"
+"                </table>\n"
+"            </div>\n"
+"            <div style=\"padding:0px; width:600px; max-width:600px; margin:0 auto; background: #FFFFFF repeat top /100%;color:#777777\">\n"
+"                <table cellspacing=\"0\" cellpadding=\"0\" style=\"width:600px ;text-align:justify; margin:0 auto; border-collapse:collapse; background:inherit; color:inherit\">\n"
+"                    <tbody><tr>\n"
+"                        <td style=\"padding:0px 10px 5px 5px;font-size: 14px;\">\n"
+"                            <p>Estimado ${object.name},</p><br/>\n"
+"                            <p>Los siguientes empleados han excedido en 2 horas lo contratado para el día: </p>\n"
+"                            <ol>\n"
+"                            % for record in ctx['records']:\n"
+"                                 <li><p>El empleado <b> ${record['name']} </b> ha excedido en <b> ${record['hours']} </b> horas trabajadas contratadas para el  <b> ${record['day']}, ${record['date']}</b>.</p></li>\n"
+"                            % endfor\n"
+"                            </ol>\n"
+"                        </td>\n"
+"                    </tr></tbody>\n"
+"                </table>\n"
+"            </div>"
+
+#. module: odoo_attendance_task_extended
+#: model:mail.template,body_html:odoo_attendance_task_extended.template_notification_alert
+msgid ""
+"\n"
+"            <div summary=\"o_mail_template\" style=\"padding:0px; width:600px; margin:0 auto; background: #FFFFFF repeat top /100%;color:#777777\">\n"
+"                <table cellspacing=\"0\" cellpadding=\"0\" style=\"width:600px; border-collapse:collapse; background:inherit; color:inherit\">\n"
+"                    <tbody><tr>\n"
+"                        <td valign=\"center\" width=\"200\" style=\"padding:0px 10px 5px 5px;font-size: 12px\">\n"
+"                            <img src=\"/logo.png\" style=\"padding: 0px; margin: 0px; height: auto; width: 80px;\" alt=\"${user.company_id.name}\">\n"
+"                        </td>\n"
+"                    </tr></tbody>\n"
+"                </table>\n"
+"                <table cellspacing=\"0\" cellpadding=\"0\" style=\"width:600px; border-collapse:collapse; background:inherit; color:inherit\">\n"
+"                    <tbody><tr>\n"
+"                        <td valign=\"top\" style=\"width:600px; padding:0px 10px 5px 5px;\">\n"
+"                            <div>\n"
+"                                <hr width=\"100%\" style=\"background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0;margin:15px auto;padding:0\">\n"
+"                            </div>\n"
+"                        </td>\n"
+"                    </tr></tbody>\n"
+"                </table>\n"
+"            </div>\n"
+"            <div style=\"padding:0px; width:600px; max-width:600px; margin:0 auto; background: #FFFFFF repeat top /100%;color:#777777\">\n"
+"                <table cellspacing=\"0\" cellpadding=\"0\" style=\"width:600px ;text-align:justify; margin:0 auto; border-collapse:collapse; background:inherit; color:inherit\">\n"
+"                    <tbody><tr>\n"
+"                        <td style=\"padding:0px 10px 5px 5px;font-size: 14px;\">\n"
+"                            <p>Dear ${object.name},</p><br/>\n"
+"                            <p>The following employees have exceeded the limit of <b> 11:45 </b>hours worked on the day: </p>\n"
+"                            <ol>\n"
+"                            % for record in ctx['records']:\n"
+"                                 <li><p>The employee <b> ${record['name']} </b> has exceeded the limit of <b> 11:45 </b> working hours in the day <b> ${record['date']}</b>.\n"
+"                                 Has reported <b> ${record['hours']} </b> hours.</p></p> </li>\n"
+"                            % endfor\n"
+"                            </ol>\n"
+"                        </td>\n"
+"                    </tr></tbody>\n"
+"                </table>\n"
+"            </div>"
+msgstr ""
+"\n"
+"            <div summary=\"o_mail_template\" style=\"padding:0px; width:600px; margin:0 auto; background: #FFFFFF repeat top /100%;color:#777777\">\n"
+"                <table cellspacing=\"0\" cellpadding=\"0\" style=\"width:600px; border-collapse:collapse; background:inherit; color:inherit\">\n"
+"                    <tbody><tr>\n"
+"                        <td valign=\"center\" width=\"200\" style=\"padding:0px 10px 5px 5px;font-size: 12px\">\n"
+"                            <img src=\"/logo.png\" style=\"padding: 0px; margin: 0px; height: auto; width: 80px;\" alt=\"${user.company_id.name}\">\n"
+"                        </td>\n"
+"                    </tr></tbody>\n"
+"                </table>\n"
+"                <table cellspacing=\"0\" cellpadding=\"0\" style=\"width:600px; border-collapse:collapse; background:inherit; color:inherit\">\n"
+"                    <tbody><tr>\n"
+"                        <td valign=\"top\" style=\"width:600px; padding:0px 10px 5px 5px;\">\n"
+"                            <div>\n"
+"                                <hr width=\"100%\" style=\"background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0;margin:15px auto;padding:0\">\n"
+"                            </div>\n"
+"                        </td>\n"
+"                    </tr></tbody>\n"
+"                </table>\n"
+"            </div>\n"
+"            <div style=\"padding:0px; width:600px; max-width:600px; margin:0 auto; background: #FFFFFF repeat top /100%;color:#777777\">\n"
+"                <table cellspacing=\"0\" cellpadding=\"0\" style=\"width:600px ;text-align:justify; margin:0 auto; border-collapse:collapse; background:inherit; color:inherit\">\n"
+"                    <tbody><tr>\n"
+"                        <td style=\"padding:0px 10px 5px 5px;font-size: 14px;\">\n"
+"                            <p>Estimado ${object.name},</p><br/>\n"
+"                            <p>Los siguientes empleados han excedido el límite de  <b> 11:45 </b>horas trabajadas en el día: </p>\n"
+"                            <ol>\n"
+"                            % for record in ctx['records']:\n"
+"                                 <li><p>El empleado <b> ${record['name']} </b> ha escedido el límite de  <b> 11:45 </b> horas trabajadas en el día <b> ${record['date']}</b>.\n"
+"                                 Ha reportado <b> ${record['hours']} </b> horas.</p></p> </li>\n"
+"                            % endfor\n"
+"                            </ol>\n"
+"                        </td>\n"
+"                    </tr></tbody>\n"
+"                </table>\n"
+"            </div>"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_hr_attendance_task_view_active_employee_id
+msgid "Active employee id"
+msgstr "Active employee id"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_hr_attendance_task_id_activity
+msgid "Activity Id"
+msgstr "Activity Id"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model,name:odoo_attendance_task_extended.model_hr_attendance
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_hr_attendance_task_view_active_employee_id_attendance_state
+msgid "Attendance"
+msgstr "Servicio"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_hr_employee_tz
+msgid "Timezone"
+msgstr "Zona horaria"
+
+#. module: odoo_attendance_task_extended
+#. openerp-web
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:72
+#, python-format
+msgid "Today's work hours:"
+msgstr "Tiempo Total Trabajado:"
+
+#. module: odoo_attendance_task_extended
+#. openerp-web
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:20
+#, python-format
+msgid "Check in"
+msgstr "Entrada"
+
+#. module: odoo_attendance_task_extended
+#. openerp-web
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:16
+#, python-format
+msgid "Check out"
+msgstr "Salida"
+
+#. module: odoo_attendance_task_extended
+#. openerp-web
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:74
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:88
+#, python-format
+msgid "Checked in at"
+msgstr "Entrada a las"
+
+#. module: odoo_attendance_task_extended
+#. openerp-web
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:68
+#, python-format
+msgid "Checked out at"
+msgstr "Inicio a las"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.actions.act_window,help:odoo_attendance_task_extended.action_hr_attendance_task_tree
+msgid "Click to define a new task."
+msgstr "Click para adicionar una nueva Tarea"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.actions.act_window,help:odoo_attendance_task_extended.hr_attendance_task_action_kanban
+msgid ""
+"Create a few tasks to be able to select an task here\n"
+"                    and perform his check in / check out."
+msgstr ""
+"Crear tareas para poder seleccionarlas \n"
+"                    en el proceso de marcar Entrada / Salida."
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_hourprocess_table_create_uid
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_inef_table_create_uid
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_process_table_create_uid
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_alert_logs_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_hourprocess_table_create_date
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_inef_table_create_date
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_process_table_create_date
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_alert_logs_create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_hourprocess_table_description
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_inef_table_description
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_process_table_description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_hr_attendance_task_display_name
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_hourprocess_table_display_name
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_inef_table_display_name
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_process_table_display_name
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_hr_attendance_task_view_display_name
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_alert_logs_display_name
+msgid "Display Name"
+msgstr "Nombre a mostrar"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model,name:odoo_attendance_task_extended.model_hr_employee
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: odoo_attendance_task_extended
+#. openerp-web
+#: code:addons/odoo_attendance_task_extended/static/src/js/my_attendances.js:24
+#, python-format
+msgid "Error : Could not find employee linked to user"
+msgstr "Error : No se pudo encontrar el empleado vinculado al usuario"
+
+#. module: odoo_attendance_task_extended
+#. openerp-web
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:53
+#, python-format
+msgid "Error: could not find corresponding employee."
+msgstr "Error: no se encuentra el empleado correspondiente."
+
+#. module: odoo_attendance_task_extended
+#. openerp-web
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:78
+#, python-format
+msgid "Goodbye"
+msgstr "Hasta luego"
+
+#. module: odoo_attendance_task_extended
+#: code:addons/odoo_attendance_task_extended/models/hr_attendance.py:179
+#, python-format
+msgid "Friday"
+msgstr "Viernes"
+
+#. module: odoo_attendance_task_extended
+#: selection:hr.attendance.task,type:0
+msgid "HourProcess"
+msgstr "HourProcess"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_hourprocess_table_name
+msgid "Houre Process Name"
+msgstr "Houre Process Name"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.ui.view,arch_db:odoo_attendance_task_extended.view_attendance_tree_inh
+msgid "Hours"
+msgstr "Horas"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_hr_attendance_task_id
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_hourprocess_table_id
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_inef_table_id
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_process_table_id
+msgid "ID"
+msgstr "ID"
+
+#. module: odoo_attendance_task_extended
+#: selection:hr.attendance.task,type:0
+msgid "Inefficiency"
+msgstr "Ineficiente"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_inef_table_name
+msgid "Inefficiency Name"
+msgstr "Inefficiency Name"
+
+#. module: odoo_attendance_task_extended
+#. openerp-web
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:99
+#, python-format
+msgid "Invalid request, please return to the main menu."
+msgstr "Petición inválida, por favor regrese al menú principal."
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_hr_attendance_task___last_update
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_hourprocess_table___last_update
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_inef_table___last_update
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_process_table___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_hourprocess_table_write_uid
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_inef_table_write_uid
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_process_table_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_hourprocess_table_write_date
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_inef_table_write_date
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_process_table_write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_hr_attendance_task_name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: odoo_attendance_task_extended
+#: code:addons/odoo_attendance_task_extended/models/hr_attendance.py:80
+#, python-format
+msgid "Monday"
+msgstr "Lunes"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_hourprocess_table_price
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_inef_table_price
+msgid "PVP (€/unit)"
+msgstr "PVP (€/unit)"
+
+#. module: odoo_attendance_task_extended
+#. openerp-web
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:30
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:34
+#, python-format
+msgid "Please enter your PIN to check in"
+msgstr "Ingrese el PIN para registrar la Entrada"
+
+#. module: odoo_attendance_task_extended
+#. openerp-web
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:27
+#, python-format
+msgid "Please enter your PIN to check out"
+msgstr "Ingrese el PIN para registrar la Salida"
+
+#. module: odoo_attendance_task_extended
+#. openerp-web
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:54
+#, python-format
+msgid "Please return to the main menu."
+msgstr "Por favor regrese al menú principal."
+
+#. module: odoo_attendance_task_extended
+#: selection:hr.attendance.task,type:0
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_prod_process_table_name
+msgid "Process"
+msgstr "Procesando"
+
+#. module: odoo_attendance_task_extended
+#: code:addons/odoo_attendance_task_extended/models/hr_attendance.py:204
+#, python-format
+msgid "Saturday"
+msgstr "Sábado"
+
+#. module: odoo_attendance_task_extended
+#. openerp-web
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:9
+#, python-format
+msgid "Select task"
+msgstr "Seleccionar tarea"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_hr_attendance_attendance_task
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_hr_employee_attendance_task
+#: model:ir.ui.view,arch_db:odoo_attendance_task_extended.hr_attendance_task_form_view
+#: model:ir.ui.view,arch_db:odoo_attendance_task_extended.hr_attendance_task_search_view
+#: model:ir.ui.view,arch_db:odoo_attendance_task_extended.hr_attendance_task_tree_view
+msgid "Task"
+msgstr "Tarea"
+
+#. module: odoo_attendance_task_extended
+#: code:addons/odoo_attendance_task_extended/models/hr_attendance.py:229
+#, python-format
+msgid "Sunday"
+msgstr "Domingo"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.ui.view,arch_db:odoo_attendance_task_extended.view_attendance_tree_inh
+msgid "Task Details"
+msgstr "Detalles de tarea "
+
+#. module: odoo_attendance_task_extended
+#. openerp-web
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:77
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:91
+#, python-format
+msgid "Task in-"
+msgstr "Tarea inicializada -"
+
+#. module: odoo_attendance_task_extended
+#. openerp-web
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:71
+#, python-format
+msgid "Task out-"
+msgstr "Tarea finalizada -"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.actions.act_window,name:odoo_attendance_task_extended.action_hr_attendance_task_tree
+#: model:ir.actions.act_window,name:odoo_attendance_task_extended.hr_attendance_task_action_kanban
+#: model:ir.ui.menu,name:odoo_attendance_task_extended.menu_action_task_tree
+msgid "Tasks"
+msgstr "Tareas"
+
+#. module: odoo_attendance_task_extended
+#: code:addons/odoo_attendance_task_extended/models/hr_attendance.py:277
+#, python-format
+msgid "The employee %s has exceeded in %s working hours contract for the %s, %s."
+msgstr "El empleado %s ha excedido en %s horas trabajadas contratadas para el %s, %s."
+
+#. module: odoo_attendance_task_extended
+#: code:addons/odoo_attendance_task_extended/models/hr_attendance.py:302
+#, python-format
+msgid "The employee %s has exceeded the limit of 11:45 working hours in the day %s. Has reported %s hours."
+msgstr "El empleado %s ha excedido el límite de 11:45 horas trabajadas en el día %s. Ha reportado %s horas."
+
+#. module: odoo_attendance_task_extended
+#: code:addons/odoo_attendance_task_extended/models/hr_attendance.py:154
+#, python-format
+msgid "Thursday"
+msgstr "Jueves"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.ui.menu,name:odoo_attendance_task_extended.menu_action_time_control
+msgid "Time Control"
+msgstr "Time Control"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.ui.view,arch_db:odoo_attendance_task_extended.Time_Control_view_filter
+msgid "TimeControl Search"
+msgstr "TimeControl Search"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_hr_attendance_presence_type_1
+msgid "Tipo_presencia_1"
+msgstr "Tipo_presencia_1"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_hr_attendance_presence_type_2
+msgid "Tipo_presencia_2"
+msgstr "Tipo_presencia_2"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.actions.act_window,help:odoo_attendance_task_extended.hr_attendance_task_action_kanban
+msgid "To create task go to the Tasks menu."
+msgstr "Para crear la tarea ir al menú Tareas."
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_hr_attendance_task_type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: odoo_attendance_task_extended
+#: code:addons/odoo_attendance_task_extended/models/hr_attendance.py:104
+#, python-format
+msgid "Wednesday"
+msgstr "Miercoles"
+
+#. module: odoo_attendance_task_extended
+#. openerp-web
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:7
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:92
+#, python-format
+msgid "Welcome"
+msgstr "Bienvenido"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_hr_attendance_workedHours
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_jpl_alert_logs_worked_hours
+msgid "Worked hours"
+msgstr "Horas trabajadas"
+
+#. module: odoo_attendance_task_extended
+#: code:addons/odoo_attendance_task_extended/models/hr_attendance.py:936
+#, python-format
+msgid "Wrong PIN"
+msgstr "PIN Incorrecto"
+
+#. module: odoo_attendance_task_extended
+#: code:addons/odoo_attendance_task_extended/models/hr_attendance.py:931
+#, python-format
+msgid "Wrong Task"
+msgstr "Tarea incorrecta"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model,name:odoo_attendance_task_extended.model_generate_task_abstract
+msgid "generate.task.abstract"
+msgstr "generate.task.abstract"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model,name:odoo_attendance_task_extended.model_hr_attendance_task
+msgid "hr.attendance.task"
+msgstr "hr.attendance.task"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model,name:odoo_attendance_task_extended.model_jpl_prod_hourprocess_table
+msgid "jpl_prod.hourprocess_table"
+msgstr "jpl_prod.hourprocess_table"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model,name:odoo_attendance_task_extended.model_jpl_prod_inef_table
+msgid "jpl_prod.inef_table"
+msgstr "jpl_prod.inef_table"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model,name:odoo_attendance_task_extended.model_jpl_prod_process_table
+msgid "jpl_prod.process_table"
+msgstr "jpl_prod.process_table"
+
+#. module: odoo_attendance_task_extended
+#. openerp-web
+#: code:addons/odoo_attendance_task_extended/static/src/xml/attendance.xml:102
+#, python-format
+msgid "ok"
+msgstr "ok"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.actions.act_window,name:odoo_attendance_task_extended.action_change_task_wizard
+#: model:ir.ui.menu,name:odoo_attendance_task_extended.menu_change_task_wizard
+msgid "Change task"
+msgstr "Cambio masivo de tarea"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.ui.view,arch_db:odoo_attendance_task_extended.change_task_wizard
+msgid "Create task change"
+msgstr "Realizar cambio de tarea"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_change_task_wizard_pin
+msgid "PIN"
+msgstr "PIN"
+
+#. module: odoo_attendance_task_extended
+#: code:addons/odoo_attendance_task_extended/wizard/wizard_change_task.py:35
+#, python-format
+msgid "Error! Invalid pin."
+msgstr "Error! PIN no válido!!!."
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_change_task_wizard_plant_id
+msgid "Plant"
+msgstr "Planta"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_change_task_wizard_from_task_id
+msgid "Task from"
+msgstr "De tarea"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model.fields,field_description:odoo_attendance_task_extended.field_change_task_wizard_to_task_id
+msgid "Task to"
+msgstr "A tarea"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.model,name:odoo_attendance_task_extended.model_change_task_wizard
+msgid "Wizard for Change task"
+msgstr "Cambio masivo de tarea"
+
+#. module: odoo_attendance_task_extended
+#: model:ir.ui.view,arch_db:odoo_attendance_task_extended.change_task_wizard
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: odoo_attendance_task_extended
+#: code:addons/odoo_attendance_task_extended/wizard/wizard_change_task.py:44
+#, python-format
+msgid "To task must diferent to from task."
+msgstr "El campo 'A tarea' debe ser diferente al campo 'De tarea'."
+
+#. module: odoo_attendance_task_extended
+#: model:res.groups,name:odoo_attendance_task_extended.group_attendance_kiosk_mode
+msgid "Attendance kiosk mode"
+msgstr "Modo Quiosko"

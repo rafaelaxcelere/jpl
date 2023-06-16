@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_cron_unjustified_absence" model="ir.cron">
+        <field name="name">Calculate Unjustified absences</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model">hr.attendance</field>
+        <field name="function">_compute_holiday_by_absence</field>
+        <field name="args">()</field>
+    </record>
+
+    <record id="ir_cron_send_alert" model="ir.cron">
+        <field name="name">Send alert exceeded worked hours</field>
+        <field name="interval_number">5</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model">hr.attendance</field>
+        <field name="function">_cron_send_alert</field>
+        <field name="args">()</field>
+    </record>
+
+    <record id="ir_cron_send_alert_2_hours" model="ir.cron">
+        <field name="name">Send alert, exceeding the contracted hours in two hours</field>
+        <field name="interval_number">5</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model">hr.attendance</field>
+        <field name="function">_cron_send_alert_2</field>
+        <field name="args">()</field>
+    </record>
+</odoo>

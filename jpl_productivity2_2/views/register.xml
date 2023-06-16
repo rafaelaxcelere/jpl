@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <menuitem id="register_menu" name="Registros" parent="jpl_prod_menu"
+                  groups="master_group_user_id,viewer_group_user_id,operator_group_user_id" sequence="3"/>
+
+        <!-- Register Main form -->
+        <record model="ir.ui.view" id="register_main_form_view">
+            <field name="name">New register main form</field>
+            <field name="model">jpl_prod.reg_table</field>
+            <!-- <field name="priority" eval="18"/> -->
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group colspan="2" col="4">
+                            <field name="date"/>
+                            <field name="shift"/>
+                            <field name="total_hours_presence"/>
+                            <field name="total_hours_declared"/>
+                            <field name="hours_difference"/>
+                            <field name="total_hours_process" invisible="1"/>
+                            <field name="total_hours_hoursxprocess" invisible="1"/>
+                            <field name="total_hours_inefficiencies" invisible="1"/>
+
+                        </group>
+                        <group>
+                            <notebook>
+                                <page string="Units">
+                                    <group>
+                                        <field name="task_reg_ids" widget="one2many" nolabel="1" mode="tree">
+                                            <tree editable="bottom" create="false" delete="false" limit="200"
+                                                  default_order="related_process_on_task_view">
+                                                <field name="order"/>
+                                                <field name="id_task" options="{'no_open': True}" readonly="1"/>
+                                                <field name="related_process_on_task_view" options="{'no_open': True}"
+                                                       readonly="1"/>
+                                                <field name="elementary_unit_on_task_view" options="{'no_open': True}"
+                                                       readonly="1"/>
+                                                <field name="units"/>
+                                                <field name="scrap_units"/>
+                                                <field name="ef_op_time"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                    <group>
+                                        <field name="prod_reg_ids" widget="one2many" nolabel="1" mode="tree">
+                                            <tree editable="bottom" create="false" delete="false">
+                                                <field name="id_prod_waste" options="{'no_open': True}" readonly="1"/>
+                                                <field name="related_process_on_task" options="{'no_open': True}"
+                                                       readonly="1"/>
+                                                <field name="units"/>
+                                                <field name="prod_wasted_time"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+
+                                </page>
+                                <page string="Hours">
+                                    <group>
+                                        <field name="process_reg_ids" widget="one2many" nolabel="1" mode="tree">
+                                            <tree editable="bottom" create="false" delete="false">
+                                                <field name="id_process" options="{'no_open': True}" readonly="1"/>
+                                                <!-- <field name="ef_op_process_time"/> -->
+                                                <field name="op_time"/>
+                                                <field name="date" invisible="1"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                    <group>
+                                        <field name="hourprocess_reg_ids" widget="one2many" nolabel="1" mode="tree">
+                                            <tree editable="bottom" create="false" delete="false">
+                                                <field name="id_processxhours" options="{'no_open': True}"
+                                                       readonly="1"/>
+                                                <!-- <field name="ef_op_process_time"/> -->
+                                                <field name="op_time"/>
+                                                <field name="date" invisible="1"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                    <group>
+                                        <field name="inef_reg_ids" widget="one2many" nolabel="1" mode="tree">
+                                            <tree editable="bottom" create="false" delete="false">
+                                                <field name="id_inef" options="{'no_open': True}" readonly="1"/>
+                                                <field name="dest_time"/>
+                                                <field name="comments"/>
+                                                <field name="date" invisible="1"/>
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Show views-->
+        <record model="ir.actions.act_window" id="new_register_action">
+            <field name="name">New Register</field>
+            <field name="res_model">jpl_prod.reg_table</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="register_main_form_view"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first Register
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="new_register_menu" name="Nuevo Registro" parent="register_menu" action="new_register_action"
+                  sequence="31"/>
+
+
+        <record id="register_list_form" model="ir.ui.view">
+            <field name="name">Register list</field>
+            <field name="model">jpl_prod.reg_table</field>
+            <field name="arch" type="xml">
+                <tree string="Process List" default_order="date desc">
+                    <field name="date"></field>
+                    <field name="plant"></field>
+                    <field name="total_hours_presence"></field>
+                    <field name="total_hours_declared"></field>
+                    <field name="total_hours_process" invisible="1"/>
+                    <field name="total_hours_hoursxprocess" invisible="1"/>
+                    <field name="total_hours_inefficiencies" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="register_list_action">
+            <field name="name">Register List</field>
+            <field name="res_model">jpl_prod.reg_table</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="register_list_form"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first Register
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem id="list_register_menu" name="Lista de registros" parent="register_menu" action="register_list_action"
+                  sequence="32"/>
+
+        <record id="units_employee_tree" model="ir.ui.view">
+            <field name="name">Registro de Unidades</field>
+            <field name="model">jpl_prod.units_employee</field>
+            <field name="arch" type="xml">
+                <tree string="Registro de Unidades y empleado" editable="top"  default_order="start_date desc">
+                    <field name="start_date"></field>
+                    <field name="id_sap_employee"></field>
+                    <field name="plant"></field>
+                    <field name="process_name"></field>
+                    <field name="type_task"></field>
+                    <field name="task_name"></field>
+                    <field name="units"></field>
+                    <field name="id_process"></field>
+                    <field name="id_task"></field>
+                    <field name="id_waste"></field>
+                    <field name="assigned_employee"></field>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="units_employee_tree_action">
+            <field name="name">Registro unidades y Empleados</field>
+            <field name="res_model">jpl_prod.units_employee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="units_employee_tree"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Crea  el primer registro de unidades
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="units_register" name="Registro Unidades" parent="register_menu" action="units_employee_tree_action"
+                  sequence="12"/>
+
+
+    </data>
+</odoo>

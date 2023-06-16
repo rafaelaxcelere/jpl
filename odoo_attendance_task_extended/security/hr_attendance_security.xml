@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="time_control_rule" model="ir.rule">
+            <field name="name">Time Control Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_time_control_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id')),(4, ref('jpl_productivity2_2.operator_group_user_id'))]"/>
+            <field name="domain_force">[('related_plant.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="alert_logs_rule" model="ir.rule">
+            <field name="name">Alert Logs Viewer</field>
+            <field name="model_id" ref="model_jpl_alert_logs"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id')),(4, ref('jpl_productivity2_2.operator_group_user_id'))]"/>
+            <field name="domain_force">[('related_plant.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="task_hr_attendance_task_rule" model="ir.rule">
+            <field name="name">Task Employee UserS Viewer</field>
+            <field name="model_id" ref="model_hr_attendance_task"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id')),(4, ref('jpl_productivity2_2.operator_group_user_id')),(4, ref('jpl_productivity2_2.kiosk_group_user_id'))]"/>
+            <field name="domain_force">[('related_plant.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="task_hr_attendance_rule" model="ir.rule">
+            <field name="name">Task Employee UserS Viewer</field>
+            <field name="model_id" ref="model_hr_attendance"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id')),(4, ref('jpl_productivity2_2.operator_group_user_id'))]"/>
+            <field name="domain_force">[('related_plant.viewers2','in',[user.id]),('employee_id.plant_id.viewers2','=',user.id)]</field>
+        </record>
+
+        <record id="master_task_hr_attendance_task_rule" model="ir.rule">
+            <field name="name">Task Employee UserS Master</field>
+            <field name="model_id" ref="model_hr_attendance_task"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.master_group_user_id'))]"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+        </record>
+
+        <record id="master_task_hr_attendance_rule" model="ir.rule">
+            <field name="name">Task Employee UserS Master</field>
+            <field name="model_id" ref="model_hr_attendance"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.master_group_user_id'))]"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+        </record>
+
+        <!--Heredando la vista de oficial de asistencia para que vea solo las de la planta-->
+
+        <record id="hr_attendance.hr_attendance_rule_attendance_manager" model="ir.rule">
+            <field name="domain_force">[('related_plant.viewers2','in',[user.id]),('employee_id.plant_id.viewers2','=',user.id)]</field>
+        </record>
+
+        <!-- <record id="test_task_hr_attendance_rule" model="ir.rule">
+            <field name="name">Task Employee Test</field>
+            <field name="model_id" ref="model_hr_attendance"/>
+            <field name="domain_force">[('related_plant.viewers2','in',[user.id]),('employee_id.plant_id.viewers2','=',user.id)]</field>
+        </record>
+
+        <record id="test_task_hr_holidays_rule" model="ir.rule">
+            <field name="name">Task Employee holiday</field>
+            <field name="model_id" ref="model_hr_holidays"/>
+            <field name="domain_force">[('plant_id.viewers2','in',[user.id]),('employee_id.plant_id.viewers2','=',user.id)]</field>
+        </record> -->
+
+
+    <record id="group_attendance_kiosk_mode" model="res.groups">
+        <field name="name">Attendance kiosk mode</field>
+        <field name="category_id" ref="base.module_category_hr_attendance"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_portal')),(4, ref('base.group_public')),(4, ref('base.group_no_one')),(4, ref('hr_attendance.group_hr_attendance_use_pin'))]"/>
+    </record>
+
+    <menuitem id="hr_attendance.menu_hr_attendance_root" name="Attendances" sequence="90" groups="hr.group_hr_attendance,group_attendance_kiosk_mode" web_icon="hr_attendance,static/description/icon.png"/>
+    <menuitem id="hr_attendance.menu_hr_attendance_manage_attendances" name="Manage Attendances" parent="hr_attendance.menu_hr_attendance_root" sequence="20" groups="hr_attendance.group_hr_attendance_user,group_attendance_kiosk_mode"/>
+    <menuitem id="hr_attendance.menu_hr_attendance_kiosk_mode" name="Kiosk Mode" parent="hr_attendance.menu_hr_attendance_manage_attendances" sequence="20" groups="hr_attendance.group_hr_attendance_user,group_attendance_kiosk_mode" action="hr_attendance.hr_attendance_action_kiosk_mode"/>
+    <menuitem id="hr_attendance.menu_hr_attendance_my_attendances" name="My Attendances" parent="hr_attendance.menu_hr_attendance_root" sequence="10" groups="hr.group_hr_attendance,group_attendance_kiosk_mode" action="hr_attendance.hr_attendance_action_my_attendances"/>
+    </data>
+</odoo>

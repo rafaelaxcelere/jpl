@@ -1,0 +1,16 @@
+.fixedHeight {
+        color:red;
+        font-size:10px;
+        max-height: 150px;
+        margin-bottom: 10px;
+        overflow-x: auto;
+        overflow-y: auto;
+    }
+.down-arrow::before {
+    content: "▼";
+    display: inline-block;
+    position: absolute;
+    right: 140px;
+    top: 160px;
+    cursor:pointer;
+}

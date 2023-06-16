@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="jpl_alert_log_tree_view" model="ir.ui.view">
+             <field name="name">jpl.alert.logs.tree.view</field>
+             <field name="model">jpl.alert.logs</field>
+             <field name="arch" type="xml">
+                 <tree editable="false" create="false" delete="false" default_order="create_date desc">
+                     <field name="create_date" options="{'no_open': True}" readonly="1"/>
+                     <field name="name" options="{'no_open': True}" readonly="1"/>
+                     <field name="employee_id" options="{'no_open': True}" readonly="1"/>
+                     <field name="worked_hours" options="{'no_open': True}" readonly="1"/>
+                 </tree>
+             </field>
+
+        </record>
+
+        <record model="ir.actions.act_window" id="jpl_alert_logs_action">
+            <field name="name">Alerts exceeded worked hours</field>
+            <field name="res_model">jpl.alert.logs</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="jpl_alert_log_tree_view"></field>
+        </record>
+
+        <menuitem id="menu_action_alert_logs" action="jpl_alert_logs_action" name="Alert logs"
+                  parent="hr_attendance.menu_hr_attendance_manage_attendances" sequence="55"  groups="hr_attendance.group_hr_attendance_user"/>
+    </data>
+</odoo>

@@ -1,0 +1,71 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_hr_attendance_task,access_hr_attendance_task,model_hr_attendance_task,base.group_user,1,1,1,1
+
+access_jpl_prod_time_control_table,access_jpl_prod_time_control_table,model_jpl_prod_time_control_table,base.group_user,1,1,1,1
+
+access_jpl_alert_logs,access_jpl_alert_logs,model_jpl_alert_logs,base.group_user,1,1,1,1
+
+access_hr_attendance_user,hr.attendance.user,model_hr_attendance,hr_attendance.group_hr_attendance_user,1,1,1,0
+access_hr_attendance_manual,hr.attendance.user.manual,model_hr_attendance,hr.group_hr_attendance,1,1,1,0
+access_hr_attendance_manager,hr.attendance.user.manager,model_hr_attendance,hr_attendance.group_hr_attendance_manager,1,1,1,0
+access_hr_attendance_admin,hr.attendance.user.admin,model_hr_attendance,odoo_attendance_task_extended.group_hr_attendance_admin,1,1,1,1
+
+
+
+
+
+
+"km_ir_attachment_group_user","kir_attachment group_user","base.model_ir_attachment","group_attendance_kiosk_mode",1,1,1,1
+"km_ir_exports_group_system","kir_exports group_system","base.model_ir_exports","group_attendance_kiosk_mode",1,1,1,1
+"km_ir_exports_line_group_system","kir_exports_line group_system","base.model_ir_exports_line","group_attendance_kiosk_mode",1,1,1,1
+"km_ir_model_data_user","kir_model_data user","base.model_ir_model_data",group_attendance_kiosk_mode,1,0,1,0
+"km_ir_sequence_group_user","kir_sequence group_user","base.model_ir_sequence","group_attendance_kiosk_mode",1,0,0,0
+"km_ir_sequence_date_range_group_user","kir_sequence_date_range group_user","base.model_ir_sequence_date_range","group_attendance_kiosk_mode",1,0,0,0
+"km_ir_translation_all","kir_translation all","base.model_ir_translation","group_attendance_kiosk_mode",1,1,1,1
+"km_ir_ui_menu_group_user","kir_ui_menu group_user","base.model_ir_ui_menu",group_attendance_kiosk_mode,1,0,0,0
+"km_res_groups_group_user","kres_groups group_user","base.model_res_groups",group_attendance_kiosk_mode,1,0,0,0
+"km_res_partner_group_user","kres_partner group_user","base.model_res_partner","group_attendance_kiosk_mode",1,0,0,0
+"km_res_partner_bank_group_user","kres_partner_bank group_user","base.model_res_partner_bank","group_attendance_kiosk_mode",1,0,0,0
+"km_res_partner_category_group_user","kres_partner_category group_user","base.model_res_partner_category","group_attendance_kiosk_mode",1,0,0,0
+"km_res_bank_user","kres_bank user","base.model_res_bank","group_attendance_kiosk_mode",1,0,0,0
+"km_res_font_group_user","kres_res_font group_user","base.model_res_font","group_attendance_kiosk_mode",1,1,1,1
+km_hr_attendance_task,km_hr_attendance_task,model_hr_attendance_task,group_attendance_kiosk_mode,1,1,1,1
+km_jpl_prod_time_control_table,km_jpl_prod_time_control_table,model_jpl_prod_time_control_table,group_attendance_kiosk_mode,1,1,1,1
+km_jpl_alert_logs,km_jpl_alert_logs,model_jpl_alert_logs,group_attendance_kiosk_mode,1,1,1,1
+km_hr_employee_category_emp,kmhr.employee.category.emp,hr.model_hr_employee_category,group_attendance_kiosk_mode,1,0,0,0
+km_hr_employee_system_user,kmhr.employee system user,hr.model_hr_employee,group_attendance_kiosk_mode,1,0,0,0
+km_hr_department_employee,kmhr.department.employee,hr.model_hr_department,group_attendance_kiosk_mode,1,0,0,0
+km_hr_attendance_system_user,kmhr.attendance.system.user,hr_attendance.model_hr_attendance,group_attendance_kiosk_mode,1,1,1,0
+km_mail_message_user,kmmail.message.user,mail.model_mail_message,group_attendance_kiosk_mode,1,1,1,1
+km_mail_mail_user,kmmail.mail.user,mail.model_mail_mail,group_attendance_kiosk_mode,1,1,1,0
+km_mail_followers_user,kmmail.followers.user,mail.model_mail_followers,group_attendance_kiosk_mode,1,1,1,0
+km_mail_notification_user,kmmail.notification.user,mail.model_mail_notification,group_attendance_kiosk_mode,1,1,1,0
+km_mail_channel_user,kmmail.group.user,mail.model_mail_channel,group_attendance_kiosk_mode,1,1,1,1
+km mail_channel_partner_user,kmmail.channel.partner.user,mail.model_mail_channel_partner,group_attendance_kiosk_mode,1,1,1,1
+km_mail_alias_user,kmmail.alias.user,mail.model_mail_alias,group_attendance_kiosk_mode,1,1,1,1
+km_mail_message_subtype_user,kmmail.message.subtype.user,mail.model_mail_message_subtype,group_attendance_kiosk_mode,1,1,1,1
+km_mail_tracking_value_user,kmmail.tracking.value.user,mail.model_mail_tracking_value,group_attendance_kiosk_mode,0,0,0,0
+km_mail_template,kmmail.template,mail.model_mail_template,group_attendance_kiosk_mode,1,1,1,0
+km_mail_shortcode,kmmail.shortcode,mail.model_mail_shortcode,group_attendance_kiosk_mode,1,1,1,1
+km_mail_test_all,kmmail.test.all,mail.model_mail_test,group_attendance_kiosk_mode,1,1,1,1
+km_planner_emp,kmplanner.planner.emp,web_planner.model_web_planner,group_attendance_kiosk_mode,1,1,0,0
+km_resource,kmplanner.resource,resource.model_resource_resource,group_attendance_kiosk_mode,1,1,1,1
+global_resource,global.resource,resource.model_resource_resource,,1,0,0,0
+km_hr_employee_category_user,kmhr.employee.category.user,hr.model_hr_employee_category,group_attendance_kiosk_mode,1,1,1,1
+km_hr_employee_user,kmhr.employee user,hr.model_hr_employee,group_attendance_kiosk_mode,1,1,1,1
+km_hr_department_user,kmhr.department.user,hr.model_hr_department,group_attendance_kiosk_mode,1,1,1,1
+km_hr_job_user,kmhr.job user,hr.model_hr_job,group_attendance_kiosk_mode,1,1,1,1
+km_ir_property_hr_user,kmir_property hr_user,base.model_ir_property,group_attendance_kiosk_mode,1,1,1,0
+
+
+km_jpl_prod_cost_table,km_jpl_prod_cost_table,jpl_productivity2_2.model_jpl_prod_cost_table,group_attendance_kiosk_mode,1,1,1,1
+km_jpl_prod_area_table,km_jpl_prod_area_table,jpl_productivity2_2.model_jpl_prod_area_table,group_attendance_kiosk_mode,1,1,1,1
+km_jpl_prod_division_table,km_jpl_prod_division_table,jpl_productivity2_2.model_jpl_prod_division_table,group_attendance_kiosk_mode,1,1,1,1
+km_jpl_prod_center_table,km_jpl_prod_center_table,jpl_productivity2_2.model_jpl_prod_center_table,group_attendance_kiosk_mode,1,1,1,1
+km_jpl_prod_plant_table,km_jpl_prod_plant_table,jpl_productivity2_2.model_jpl_prod_plant_table,group_attendance_kiosk_mode,1,1,1,1
+km_jpl_prod_employee_category,km_jpl_prod_employee_category,jpl_productivity2_2.model_jpl_prod_employee_category,group_attendance_kiosk_mode,1,1,1,1
+km_jpl_prod_employee_status,km_jpl_prod_employee_status,jpl_productivity2_2.model_jpl_prod_employee_status,group_attendance_kiosk_mode,1,1,1,1
+km_jpl_prod_extra_invoice,km_jpl_prod_extra_invoice,jpl_productivity2_2.model_jpl_prod_extra_invoice,group_attendance_kiosk_mode,1,1,1,1
+km_jpl_prod_extra_invoice_concept_list,km_jpl_prod_extra_invoice_concept_list,jpl_productivity2_2.model_jpl_prod_extra_invoice_concept_list,group_attendance_kiosk_mode,1,1,1,1
+

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- Visualización de margen de explotación -->
+        <menuitem id="EconomicalReport_menu" name="Info Económica" parent="jpl_prod_menu" groups="viewer_group_user_id,master_group_user_id" sequence="1"/> <!--  -->
+
+        <record model="ir.ui.view" id="jpl_economic_reporting_pivot2">
+            <field name="name">Reporte Económico</field>
+            <field name="model">jpl_prod.est_gross_margin</field>
+            <field name="arch" type="xml">
+
+                <pivot string="economical report" disable_linking="True" options='{"load_defaults":"true","lower_threshold":0,"upper_threshold":0,"lower_bg_color":"white","upper_bg_color":"withe","lower_font_color":"Red", "upper_font_color":"Green"}'>
+                    <field name="id_area" type="col">Area</field>
+                    <field name="id_division" type="col">Division</field>
+                    <field name="id_center" type="col">Center</field>
+                    <field name="id_plant" type="col">Plant</field>
+                    <field name="date" interval="month" type="row">Date</field>
+
+                    <field name="total_fact" type="measure">€</field>
+                    <field name="total_cost" type="measure">€</field>
+                    <field name="gm_total" type="measure" >€</field>
+                    <field name="gm_obj" type="measure" >%</field>
+                    <field name="gm100_total" type="measure" >%</field>
+                    <field name="fulfillment_gm" type="measure" highlight="true">%</field>
+
+                </pivot>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="Economic_reporting_list_action2">
+            <field name="name">Reporte Economico</field>
+            <field name="res_model">jpl_prod.est_gross_margin</field>
+            <field name="view_mode">pivot</field>
+            <field name="view_id" ref="jpl_economic_reporting_pivot2"></field>
+        </record>
+
+        <menuitem id="economic_reporting2" name="Reporte Económico" parent="EconomicalReport_menu" action="Economic_reporting_list_action2"
+                  sequence="10"/>
+
+        <record model="ir.ui.view" id="jpl_invoice_reporting_pivot">
+            <field name="name">Tabla Pivot Extracción Factura</field>
+            <field name="model">jpl_prod.invoice</field>
+            <field name="arch" type="xml">
+
+                <pivot string="economical report" disable_linking="True" >
+                    <field name="area_id" type="row">Area</field>
+                    <field name="division_id" type="row">Division</field>
+                    <field name="center_id" type="row">Center</field>
+                    <field name="plant_id" type="row">plant</field>
+                    <field name="name" type="row">Nombre</field>
+                    <field name="date" interval="month" type="col">Date</field>
+                    <field name="units" type="measure">Units</field>
+                    <field name="price" type="measure" >Price</field>
+                    <field name="billing" type="measure" >Billing</field>
+
+                </pivot>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="invoice_reporting_list_action">
+            <field name="name">Tabla Pivot Extracción Factura</field>
+            <field name="res_model">jpl_prod.invoice</field>
+            <field name="view_mode">pivot</field>
+            <field name="view_id" ref="jpl_invoice_reporting_pivot"></field>
+        </record>
+
+        <menuitem id="invoice" name="Facturas" parent="EconomicalReport_menu" action="invoice_reporting_list_action"
+                  sequence="11"/>
+
+        <record id="extra_invoice_form" model="ir.ui.view">
+            <field name="name">Extra Factura y Coste</field>
+            <field name="model">jpl_prod.extra_invoice</field>
+            <field name="arch" type="xml">
+                <tree string="Extra Factura o Coste" editable="top">
+                    <field name="date"></field>
+                    <field name="concept"></field>
+                    <field name="description"></field>
+                    <field name="extra_cost"></field>
+                    <field name="extra_billing"></field>
+                    <field name="related_plant"></field>
+                    <field name="id_cat"></field>
+                    <field name="id_sub_cat"></field>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="extra_invoice_action">
+            <field name="name">Extras Facturación y Coste</field>
+            <field name="res_model">jpl_prod.extra_invoice</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="extra_invoice_form"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Crea  el primer coste o facturación extra
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="extra_invoice" name="Extras Facturas/Coste" parent="EconomicalReport_menu" action="extra_invoice_action"
+                  sequence="12"/>
+
+
+        <menuitem id="economicalgraphics" name="Graficos Economicos" parent="EconomicalReport_menu" sequence="13"/>
+
+        <record id="day_gm_graphics" model="ir.ui.view" >
+            <field name="model">jpl_prod.graphic_gm_day</field>
+            <field name="arch" type="xml">
+                <graph string="graphic" type="line">
+                    <field name="date" type="col"/>
+                    <field name="type" type="col"/>
+                    <field name="grossmargin" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="m_day_gm_graphics">
+            <field name="name">DAY GM% Graph</field>
+            <field name="res_model">jpl_prod.graphic_gm_day</field>
+             <field name="view_mode">graph</field>
+            <field name="view_id" ref="day_gm_graphics"/>
+        </record>
+
+
+         <menuitem id="day_gm_graphic" name="Evolución MB Diario" parent="economicalgraphics" action="m_day_gm_graphics"
+                  sequence="26"/>
+
+        <record id="week_gm_graphics" model="ir.ui.view" >
+            <field name="model">jpl_prod.graphic_gm_week</field>
+            <field name="arch" type="xml">
+                <graph string="graphic" type="line">
+                    <field name="week" type="col"/>
+                    <field name="type" type="col"/>
+                    <field name="grossmargin" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="m_week_gm_graphics">
+            <field name="name">weekgmgraphic</field>
+            <field name="res_model">jpl_prod.graphic_gm_week</field>
+             <field name="view_mode">graph</field>
+            <field name="view_id" ref="week_gm_graphics"/>
+        </record>
+
+
+         <menuitem id="week_gm_graphic" name="Evolución MB Semanal" parent="economicalgraphics" action="m_week_gm_graphics"
+                  sequence="27"/>
+
+        <record id="month_gm_graphics" model="ir.ui.view" >
+            <field name="model">jpl_prod.graphic_gm_month</field>
+            <field name="arch" type="xml">
+                <graph string="graphic" type="line">
+                    <field name="month" type="col"/>
+                    <field name="type" type="col"/>
+                    <field name="grossmargin" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="m_month_gm_graphics">
+            <field name="name">Monthgmgraphic</field>
+            <field name="res_model">jpl_prod.graphic_gm_month</field>
+            <field name="view_mode">graph</field>
+            <field name="view_id" ref="month_gm_graphics"/>
+        </record>
+
+
+         <menuitem id="month_gm_graphic" name="Evolución MB Mensual" parent="economicalgraphics" action="m_month_gm_graphics"
+                  sequence="28"/>
+
+    </data>
+</odoo>
+

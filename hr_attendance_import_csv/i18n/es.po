@@ -1,0 +1,344 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* hr_attendance_import_csv
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0-20201204\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-23 01:21+0000\n"
+"PO-Revision-Date: 2022-01-23 01:21+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hr_attendance_import_csv
+#: model:ir.ui.view,arch_db:hr_attendance_import_csv.view_attendance_config_settings
+msgid "/home/my_user/attendances.csv"
+msgstr "/home/my_user/attendances.csv"
+
+#. module: hr_attendance_import_csv
+#: model:ir.ui.view,arch_db:hr_attendance_import_csv.view_attendance_config_settings
+msgid "<span>(*) This configuration is related to the company you're logged into.</span>"
+msgstr "<span>(*) Esta configuración está relacionada con la compañía en la que está conectado</span>"
+
+#. module: hr_attendance_import_csv
+#: model:ir.ui.view,arch_db:hr_attendance_import_csv.view_attendance_config_settings
+msgid "Apply"
+msgstr "Aplicar"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_interval_number
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_res_company_att_interval_number
+msgid "Att interval number"
+msgstr "Número de intervalo"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_interval_type
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_res_company_att_interval_type
+msgid "Att interval type"
+msgstr "Tipo de intervalo"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model,name:hr_attendance_import_csv.model_hr_attendance
+msgid "Attendance"
+msgstr "Asistencias"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_read_lines_attendance_task
+msgid "Attendance task"
+msgstr "Tarea de asistencia"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_read_lines_barcode
+msgid "Barcode"
+msgstr "Código de barras"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_hr_attendance_csv_binary
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_res_company_hr_attendance_csv_binary
+msgid "CSV file"
+msgstr "Archivo CSV"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_read_line_ids
+msgid "CSV lines"
+msgstr "Líneas CSV"
+
+#. module: hr_attendance_import_csv
+#: model:ir.ui.view,arch_db:hr_attendance_import_csv.view_attendance_config_settings
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_change_hr_attendance_csv_binary
+msgid "Change CSV file"
+msgstr "Cambiar archivo CSV"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_read_lines_check_in
+msgid "Check in"
+msgstr "Hora entrada"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_read_lines_check_out
+msgid "Check out"
+msgstr "Hora de salida"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model,name:hr_attendance_import_csv.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_company_id
+#: model:ir.ui.view,arch_db:hr_attendance_import_csv.view_attendance_config_settings
+msgid "Company"
+msgstr "Compañía"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_read_lines_config_id
+msgid "Config"
+msgstr "Config"
+
+#. module: hr_attendance_import_csv
+#: model:ir.ui.view,arch_db:hr_attendance_import_csv.view_attendance_config_settings
+msgid "Configure CSV HR Attendance Importation"
+msgstr "Configurar CSV Importación de asistencia"
+
+#. module: hr_attendance_import_csv
+#: model:ir.actions.act_window,name:hr_attendance_import_csv.action_hr_attendance_csv_config
+msgid "Configure CSV Import Cron"
+msgstr "Configurar tarea de importación"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_create_uid
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_read_lines_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_create_date
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_read_lines_create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_cron_id
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_res_company_att_cron_import_csv_id
+msgid "Cron to execute import data"
+msgstr "Tarea para importar datos"
+
+#. module: hr_attendance_import_csv
+#: selection:res.company,att_interval_type:0
+msgid "Days"
+msgstr "Días"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_display_name
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_read_lines_display_name
+msgid "Display Name"
+msgstr "Nombre a mostrar"
+
+#. module: hr_attendance_import_csv
+#: code:addons/hr_attendance_import_csv/models/company.py:90
+#: code:addons/hr_attendance_import_csv/models/import_res_config.py:114
+#, python-format
+msgid "Error on line %d of the CSV file: the line should have a Check in data"
+msgstr "Error en la línea %d del archivo CSV: la línea debe tener hora de entrada"
+
+#. module: hr_attendance_import_csv
+#: code:addons/hr_attendance_import_csv/models/company.py:86
+#: code:addons/hr_attendance_import_csv/models/import_res_config.py:110
+#, python-format
+msgid "Error on line %d of the CSV file: the line should start with a ID"
+msgstr "Error en la línea %d del archivo CSV: la línea debe comenzar con in ID"
+
+#. module: hr_attendance_import_csv
+#: code:addons/hr_attendance_import_csv/models/import_res_config.py:101
+#, python-format
+msgid "Error on line %d of the CSV file: this line should have a ID %s Name %s Check in %s Check out %s Attendance task (separated by a %s)."
+msgstr "Error en la línea %d del archivo CSV: esta línea debe tener un ID %s Nombre %s Entrada %s Salida %s Tarea de asistencia (separada por %s)."
+
+#. module: hr_attendance_import_csv
+#: code:addons/hr_attendance_import_csv/models/company.py:80
+#, python-format
+msgid "Error on line %d of the CSV file: this line should have a ID, Name, Check in, Check out and Attendance task separated by a %s."
+msgstr "Error en la línea %d del archivo CSV: esta línea debe tener una tarea de ID, Nombre, Entrada, Salida y Asistencia separados por un %s."
+
+#. module: hr_attendance_import_csv
+#: model:ir.ui.view,arch_db:hr_attendance_import_csv.view_attendance_config_settings
+msgid "Execute cron"
+msgstr "Importar datos"
+
+#. module: hr_attendance_import_csv
+#: selection:res.company,att_interval_type:0
+msgid "Hours"
+msgstr "Horas"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,help:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_numbercall
+#: model:ir.model.fields,help:hr_attendance_import_csv.field_res_company_att_numbercall
+msgid "How many times the method is called,\n"
+"a negative number indicates no limit."
+msgstr "Cuantas veces se llama a este método,\n"
+"un número negativo indica sin límite."
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_id
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_read_lines_id
+msgid "ID"
+msgstr "ID"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings___last_update
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_read_lines___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_write_uid
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_read_lines_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_write_date
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_read_lines_write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_res_company_att_checksum_dir
+msgid "Last checksum csv dir"
+msgstr "Última suma de comprobación csv dir"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_last_read_line_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_res_company_att_last_read_line_csv
+msgid "Last number line"
+msgstr "Última línea leída"
+
+#. module: hr_attendance_import_csv
+#: selection:res.company,att_interval_type:0
+msgid "Minutes"
+msgstr "Minutos"
+
+#. module: hr_attendance_import_csv
+#: selection:res.company,att_interval_type:0
+msgid "Months"
+msgstr "Meses"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_read_lines_name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_nextcall
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_res_company_att_nextcall
+msgid "Next Execution Date"
+msgstr "Siguiente fecha de ejecución"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,help:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_nextcall
+#: model:ir.model.fields,help:hr_attendance_import_csv.field_res_company_att_nextcall
+msgid "Next planned execution date for this job."
+msgstr "Fecha de la próxima ejecución programada para esta acción."
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_numbercall
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_res_company_att_numbercall
+msgid "Number of Calls"
+msgstr "Número de ejecuciones"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_hr_attendance_csv_path
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_res_company_hr_attendance_csv_path
+msgid "Path to csv file"
+msgstr "Ruta al fichero CSV"
+
+#. module: hr_attendance_import_csv
+#: model:ir.ui.view,arch_db:hr_attendance_import_csv.view_attendance_config_settings
+msgid "Read CSV Configuration"
+msgstr "Configuración de Lectura del CSV"
+
+#. module: hr_attendance_import_csv
+#: model:ir.ui.view,arch_db:hr_attendance_import_csv.view_attendance_config_settings
+msgid "Read csv and generate attendances"
+msgstr "Leer csv y crear registros de asistencia"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model,name:hr_attendance_import_csv.model_hr_attendance_import_csv_read_lines
+msgid "Read lines csv"
+msgstr "Líneas del CSV"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_doall
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_res_company_att_doall
+msgid "Repeat Missed"
+msgstr "Repetir perdidos"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,help:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_interval_number
+#: model:ir.model.fields,help:hr_attendance_import_csv.field_res_company_att_interval_number
+msgid "Repeat every x."
+msgstr "Repetir cada x."
+
+#. module: hr_attendance_import_csv
+#: model:ir.ui.view,arch_db:hr_attendance_import_csv.view_attendance_config_settings
+msgid "Schedule configuration"
+msgstr "Configuración de la programación"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_separator
+#: model:ir.model.fields,field_description:hr_attendance_import_csv.field_res_company_att_separator
+msgid "Separator"
+msgstr "Separador"
+
+#. module: hr_attendance_import_csv
+#: model:ir.ui.menu,name:hr_attendance_import_csv.menu_hr_attendance_csv_config
+msgid "Setting CSV import"
+msgstr "Configuración de importación CSV"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model.fields,help:hr_attendance_import_csv.field_hr_attendance_import_csv_config_settings_doall
+#: model:ir.model.fields,help:hr_attendance_import_csv.field_res_company_att_doall
+msgid "Specify if missed occurrences should be executed when the server restarts."
+msgstr "Especifica si las ocurrencias perdidas deben ser ejecutadas cuando el servidor se reinicie."
+
+#. module: hr_attendance_import_csv
+#: model:ir.ui.view,arch_db:hr_attendance_import_csv.view_attendance_config_settings
+msgid "Test read"
+msgstr "Probar lectura"
+
+#. module: hr_attendance_import_csv
+#: code:addons/hr_attendance_import_csv/models/import_res_config.py:73
+#, python-format
+msgid "This file '%s' is not recognised as a CSV. Please check the file and it's extension."
+msgstr "Este archivo '%s' no se reconoce como CSV. Por favor revise el archivo y su extensión."
+
+#. module: hr_attendance_import_csv
+#: code:addons/hr_attendance_import_csv/models/import_res_config.py:72
+#, python-format
+msgid "Unsupported file format"
+msgstr "Formato de archivo no soportado"
+
+#. module: hr_attendance_import_csv
+#: selection:res.company,att_interval_type:0
+msgid "Weeks"
+msgstr "Semanas"
+
+#. module: hr_attendance_import_csv
+#: selection:res.company,att_interval_type:0
+msgid "Work Days"
+msgstr "Días de trabajo"
+
+#. module: hr_attendance_import_csv
+#: model:ir.model,name:hr_attendance_import_csv.model_hr_attendance_import_csv_config_settings
+msgid "hr_attendance_import_csv.config.settings"
+msgstr "hr_attendance_import_csv.config.settings"
+

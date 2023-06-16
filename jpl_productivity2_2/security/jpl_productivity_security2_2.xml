@@ -1,0 +1,415 @@
+<odoo>
+    <data>
+        <record model="ir.module.category" id="jpl_module_category_group_user">
+            <field name="name">JPLean module</field>
+            <field name="description">JPLean</field>
+            <field name="sequence">20</field>
+        </record>
+        <record model="res.groups" id="master_group_user_id">
+            <field name="name">Master</field>
+            <field name="comment">Usuario a todos los datos del sistema y todos los permisos</field>
+            <field name="category_id" ref="jpl_module_category_group_user"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+        <record model="res.groups" id="viewer_group_user_id">
+            <field name="name">Viewer</field>
+            <field name="comment">Usuario con permiso a datos economicos.</field>
+            <field name="category_id" ref="jpl_module_category_group_user"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+        <record model="res.groups" id="operator_group_user_id">
+            <field name="name">Operator</field>
+            <field name="comment">Usuario con permiso a datos de productividad</field>
+            <field name="category_id" ref="jpl_module_category_group_user"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+        <record model="res.groups" id="manipulation_group_user_id">
+            <field name="name">Manipulation</field>
+            <field name="comment">Usuario con permiso para duplicar procesos productivos</field>
+            <field name="category_id" ref="jpl_module_category_group_user"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+        <record model="res.groups" id="configuration_group_user_id">
+            <field name="name">Configuration plant</field>
+            <field name="comment">Usuario con permiso master a la planta asignada en Manual Viewer Added</field>
+            <field name="category_id" ref="jpl_module_category_group_user"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+        <record model="res.groups" id="hour_process_group_user_id">
+            <field name="name">Hour Process Plant Assigned</field>
+            <field name="comment">Usuario con permiso para crear y duplicar procesos a horas, pero no modificar ni eliminar.</field>
+            <field name="category_id" ref="jpl_module_category_group_user"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+
+        <record model="res.groups" id="kiosk_group_user_id">
+            <field name="name">kiosk_user</field>
+            <field name="comment">Usuario Fichajes</field>
+            <field name="category_id" ref="jpl_module_category_group_user"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+
+    </data>
+    <data noupdate="0">
+        <record id="plant_table_rule" model="ir.rule">
+            <field name="name">Plant UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_plant_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id'))]"/>
+            <field name="domain_force">[('viewers2','in',user.id)]</field>
+        </record>
+
+        <record id="reg_table_rule" model="ir.rule">
+            <field name="name">Reg Table UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_reg_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id'))]"/>
+            <field name="domain_force">[('plant.viewers2','in',user.id)]</field>
+        </record>
+
+        <record id="process_reg_table_rule" model="ir.rule">
+            <field name="name">Process Reg Table UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_process_reg_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id'))]"/>
+            <field name="domain_force">[('id_process.related_plant.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="inef_reg_table_rule" model="ir.rule">
+            <field name="name">Inef Reg Table UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_inef_reg_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id'))]"/>
+            <field name="domain_force">[('id_inef.related_plant.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="process_table_rule" model="ir.rule">
+            <field name="name">Process Table UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_process_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id'))]"/>
+            <field name="domain_force">[('related_plant.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="inef_table_rule" model="ir.rule">
+            <field name="name">Inef Table UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_inef_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id'))]"/>
+            <field name="domain_force">[('related_plant.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="hourprocess_table_rule" model="ir.rule">
+            <field name="name">Inef Table UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_hourprocess_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id'))]"/>
+            <field name="domain_force">[('related_plant.viewers2','in',[user.id])]</field>
+        </record>
+
+
+<!--        Graphics Rules-->
+
+        <record id="oee_graphic_day_rule" model="ir.rule">
+            <field name="name">Oe Graphic Day UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_oee_graphic_day"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id')),(4, ref('jpl_productivity2_2.operator_group_user_id'))]"/>
+            <field name="domain_force">[('plant_id.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="oee_graphic_week_rule" model="ir.rule">
+            <field name="name">Oe Graphic Week UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_oee_graphic_week"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id')),(4, ref('jpl_productivity2_2.operator_group_user_id'))]"/>
+            <field name="domain_force">[('plant_id.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="oee_graphic_month_rule" model="ir.rule">
+            <field name="name">Oe Graphic Month UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_oee_graphic_month"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id')),(4, ref('jpl_productivity2_2.operator_group_user_id'))]"/>
+            <field name="domain_force">[('plant_id.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="oee_graphic_rule" model="ir.rule">
+            <field name="name">Graphic GM Month UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_oee_graphic"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id')),(4, ref('jpl_productivity2_2.operator_group_user_id'))]"/>
+            <field name="domain_force">[('plant_id.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="graphic_gm_day_rule" model="ir.rule">
+            <field name="name">Graphic GM Day UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_graphic_gm_day"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id')),(4, ref('jpl_productivity2_2.operator_group_user_id'))]"/>
+            <field name="domain_force">[('plant_id.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="graphic_gm_week_rule" model="ir.rule">
+            <field name="name">Graphic GM Week UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_graphic_gm_week"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id')),(4, ref('jpl_productivity2_2.operator_group_user_id'))]"/>
+            <field name="domain_force">[('plant_id.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="graphic_gm_month_rule" model="ir.rule">
+            <field name="name">Graphic GM Month UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_graphic_gm_month"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id')),(4, ref('jpl_productivity2_2.operator_group_user_id'))]"/>
+            <field name="domain_force">[('plant_id.viewers2','in',[user.id])]</field>
+        </record>
+
+<!--        Employee Rule-->
+        <record id="jpl_groups_employee_rule" model="ir.rule">
+            <field name="name">JPL Employee UserS Plant Viewer</field>
+            <field name="model_id" ref="model_hr_employee"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id')),(4,ref('hr_attendance.group_hr_attendance_user')),(4, ref('jpl_productivity2_2.operator_group_user_id')),(4, ref('jpl_productivity2_2.kiosk_group_user_id'))]"/>
+            <field name="domain_force">['|',('plant_id.viewers2','in',user.id),'&amp;',('work_location','=', False),('plant_id','=',False)]</field>
+        </record>
+
+        <record id="jpl_groups_manager_employee_rule" model="ir.rule">
+            <field name="name">Employee Manager Plant Viewer</field>
+            <field name="model_id" ref="model_hr_employee"/>
+            <field name="groups" eval="[(4, ref('hr.group_hr_manager'))]"/>
+            <field name="domain_force">['|',('plant_id.viewers2','in',user.id),'&amp;',('work_location','=', False),('plant_id','=',False)]</field>
+        </record>
+
+    </data>
+
+    <!--Reglas para master-->
+    <data>
+        <record id="master_plant_table_rule" model="ir.rule">
+            <field name="name">Plant UserS Master</field>
+            <field name="model_id" ref="model_jpl_prod_plant_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.master_group_user_id'))]"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+        </record>
+
+        <record id="master_reg_table_rule" model="ir.rule">
+            <field name="name">Reg Table UserS Master</field>
+            <field name="model_id" ref="model_jpl_prod_reg_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.master_group_user_id'))]"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+        </record>
+
+        <record id="master_invoice_table_rule" model="ir.rule">
+            <field name="name">Invoice Table UserS Master</field>
+            <field name="model_id" ref="model_jpl_prod_invoice"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.master_group_user_id'))]"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+        </record>
+
+        <record id="master_process_reg_table_rule" model="ir.rule">
+            <field name="name">Process Reg Table UserS Master</field>
+            <field name="model_id" ref="model_jpl_prod_process_reg_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.master_group_user_id'))]"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+        </record>
+
+        <record id="master_inef_reg_table_rule" model="ir.rule">
+            <field name="name">Inef Reg Table UserS Master</field>
+            <field name="model_id" ref="model_jpl_prod_inef_reg_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.master_group_user_id'))]"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+        </record>
+
+<!--        Graphics Rules-->
+
+        <record id="master_oee_graphic_day_rule" model="ir.rule">
+            <field name="name">Oe Graphic Day UserS Master</field>
+            <field name="model_id" ref="model_jpl_prod_oee_graphic_day"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.master_group_user_id'))]"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+        </record>
+
+        <record id="master_oee_graphic_week_rule" model="ir.rule">
+            <field name="name">Oe Graphic Week UserS Master</field>
+            <field name="model_id" ref="model_jpl_prod_oee_graphic_week"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.master_group_user_id'))]"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+        </record>
+
+        <record id="master_oee_graphic_month_rule" model="ir.rule">
+            <field name="name">Oe Graphic Month UserS Master</field>
+            <field name="model_id" ref="model_jpl_prod_oee_graphic_month"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.master_group_user_id'))]"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+        </record>
+
+        <record id="master_oee_graphic_rule" model="ir.rule">
+            <field name="name">Graphic GM Month UserS Master</field>
+            <field name="model_id" ref="model_jpl_prod_oee_graphic"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.master_group_user_id'))]"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+        </record>
+
+        <record id="master_graphic_gm_day_rule" model="ir.rule">
+            <field name="name">Graphic GM Day UserS Master</field>
+            <field name="model_id" ref="model_jpl_prod_graphic_gm_day"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.master_group_user_id'))]"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+        </record>
+
+        <record id="master_graphic_gm_week_rule" model="ir.rule">
+            <field name="name">Graphic GM Week UserS Master</field>
+            <field name="model_id" ref="model_jpl_prod_graphic_gm_week"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.master_group_user_id'))]"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+        </record>
+
+        <record id="master_graphic_gm_month_rule" model="ir.rule">
+            <field name="name">Graphic GM Month UserS Master</field>
+            <field name="model_id" ref="model_jpl_prod_graphic_gm_month"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.master_group_user_id'))]"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+        </record>
+
+<!--        Employee Rule-->
+        <record id="master_jpl_groups_employee_rule" model="ir.rule">
+            <field name="name">JPL Employee UserS Plant Master</field>
+            <field name="model_id" ref="model_hr_employee"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.master_group_user_id'))]"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+        </record>
+
+<!--      Reglas visualización extra costes -->
+
+        <record id="extra_invoice_rule" model="ir.rule">
+            <field name="name">Extra invoice Rule viewer and operator</field>
+            <field name="model_id" ref="model_jpl_prod_extra_invoice"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id')),(4, ref('jpl_productivity2_2.operator_group_user_id'))]"/>
+            <field name="domain_force">[('related_plant.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="Economic_report_table_rule" model="ir.rule">
+            <field name="name">economic Table UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_est_gross_margin"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id'))]"/>
+            <field name="domain_force">[('id_plant.viewers2','in',user.id)]</field>
+        </record>
+
+        <record id="economic_report_table_rule" model="ir.rule">
+            <field name="name">economic Table UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_est_gross_margin"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id'))]"/>
+            <field name="domain_force">[('id_plant.viewers2','in',user.id)]</field>
+        </record>
+
+        <record id="oee_report_table_rule" model="ir.rule">
+            <field name="name">Oee Table UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_oee_sql_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id')),(4, ref('jpl_productivity2_2.operator_group_user_id'))]"/>
+            <field name="domain_force">[('id_plant.viewers2','in',user.id)]</field>
+        </record>
+
+        <record id="process_report_table_rule" model="ir.rule">
+            <field name="name">Efficiency process Table UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_efficiency_sql_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id')),(4, ref('jpl_productivity2_2.operator_group_user_id'))]"/>
+            <field name="domain_force">[('id_plant.viewers2','in',user.id)]</field>
+        </record>
+
+        <record id="waste_report_table_rule" model="ir.rule">
+            <field name="name">Waste process Table UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_waste_sql_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id')),(4, ref('jpl_productivity2_2.operator_group_user_id'))]"/>
+            <field name="domain_force">[('id_plant.viewers2','in',user.id)]</field>
+        </record>
+
+        <record id="ccm_report_table_rule" model="ir.rule">
+            <field name="name">Ccm process Table UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_ccm_sql_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id')),(4, ref('jpl_productivity2_2.operator_group_user_id'))]"/>
+            <field name="domain_force">[('id_plant.viewers2','in',user.id)]</field>
+        </record>
+
+        <record id="employee_efficiency_report_table_rule" model="ir.rule">
+            <field name="name">employee efficiency Table UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_employee_efficiency_sql_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id')),(4, ref('jpl_productivity2_2.operator_group_user_id'))]"/>
+            <field name="domain_force">[('id_plant.viewers2','in',user.id)]</field>
+        </record>
+
+        <record id="invoice_report_table_rule" model="ir.rule">
+            <field name="name">Invoice Table UserS Viewer</field>
+            <field name="model_id" ref="model_jpl_prod_invoice"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id'))]"/>
+            <field name="domain_force">[('plant_id.viewers2','in',user.id)]</field>
+        </record>
+
+        <record id="units_employee_report_rule" model="ir.rule">
+            <field name="name">Units employee Table UserS</field>
+            <field name="model_id" ref="model_jpl_prod_units_employee"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.viewer_group_user_id')),(4, ref('jpl_productivity2_2.operator_group_user_id'))]"/>
+            <field name="domain_force">[('plant.viewers2','in',user.id)]</field>
+        </record>
+
+<!--      Reglas Manipulator -->
+
+        <record id="process_manipulator_table_rule" model="ir.rule">
+            <field name="name">Process Table UserS manipulation</field>
+            <field name="model_id" ref="model_jpl_prod_process_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.manipulation_group_user_id'))]"/>
+            <field name="domain_force">[('related_plant.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="plant_manipulator_table_rule" model="ir.rule">
+            <field name="name">Plant Table UserS manipulation</field>
+            <field name="model_id" ref="model_jpl_prod_plant_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.manipulation_group_user_id'))]"/>
+            <field name="domain_force">[('viewers2','in',[user.id])]</field>
+        </record>
+
+<!--      Reglas Configuration Plant -->
+
+        <record id="plant_configuration_table_rule" model="ir.rule">
+            <field name="name">Plant Table UserS configuration</field>
+            <field name="model_id" ref="model_jpl_prod_plant_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.configuration_group_user_id'))]"/>
+            <field name="domain_force">[('viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="process_configuration_table_rule" model="ir.rule">
+            <field name="name">Process Table UserS configuration</field>
+            <field name="model_id" ref="model_jpl_prod_process_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.configuration_group_user_id'))]"/>
+            <field name="domain_force">[('related_plant.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="task_configuration_table_rule" model="ir.rule">
+            <field name="name">task Table UserS configuration</field>
+            <field name="model_id" ref="model_jpl_prod_task_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.configuration_group_user_id'))]"/>
+            <field name="domain_force">[('id_related_plant.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="productivity_waste_configuration_table_rule" model="ir.rule">
+            <field name="name">Productivity waste Table UserS configuration</field>
+            <field name="model_id" ref="model_jpl_prod_productivity_waste_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.configuration_group_user_id'))]"/>
+            <field name="domain_force">[('id_related_plant.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="hour_process_configuration_table_rule" model="ir.rule">
+            <field name="name">Hour process Table UserS configuration</field>
+            <field name="model_id" ref="model_jpl_prod_hourprocess_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.configuration_group_user_id'))]"/>
+            <field name="domain_force">[('related_plant.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="inefficiencies_configuration_table_rule" model="ir.rule">
+            <field name="name">Inefficiencies Table UserS configuration</field>
+            <field name="model_id" ref="model_jpl_prod_inef_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.configuration_group_user_id'))]"/>
+            <field name="domain_force">[('related_plant.viewers2','in',[user.id])]</field>
+        </record>
+<!--      Reglas Hour Process Creator -->
+        <record id="hour_process_table_rule" model="ir.rule">
+            <field name="name">hour Process Table UserS hour process</field>
+            <field name="model_id" ref="model_jpl_prod_hourprocess_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.hour_process_group_user_id'))]"/>
+            <field name="domain_force">[('related_plant.viewers2','in',[user.id])]</field>
+        </record>
+
+        <record id="plant_hour_process_rule" model="ir.rule">
+            <field name="name">Plant Table UserS hour process</field>
+            <field name="model_id" ref="model_jpl_prod_plant_table"/>
+            <field name="groups" eval="[(4, ref('jpl_productivity2_2.hour_process_group_user_id')),(4, ref('jpl_productivity2_2.operator_group_user_id'))]"/>
+            <field name="domain_force">[('viewers2','in',[user.id])]</field>
+        </record>
+
+    </data>
+</odoo>

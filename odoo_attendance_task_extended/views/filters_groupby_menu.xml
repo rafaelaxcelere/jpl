@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_cammon_ext" name="odoo_attendance_task_ext"
+              inherit_id="web.assets_common">
+        <xpath expr="//script[@src='/web/static/lib/jquery/jquery.js']" position="replace">
+            <script type="text/javascript"
+                    src="/odoo_attendance_task_extended/static/src/lib/jquery/jquery_ext.js"/>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+
+
+
+        <template id="assets_backend_hr_customize1" name="attendance_with_task_extended assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/odoo_attendance_task_extended/static/src/css/kiosko.css"/>
+                <script type="text/javascript" src="/odoo_attendance_task_extended/static/src/js/my_attendances.js"/>
+                <script type="text/javascript" src="/odoo_attendance_task_extended/static/src/js/attendance_task_kanban_view_handler.js"/>
+                <script type="text/javascript" src="/odoo_attendance_task_extended/static/src/js/kiosk_confirm.js"/>
+                <script type="text/javascript" src="/odoo_attendance_task_extended/static/src/js/kiosk_mode.js"/>
+                <script type="text/javascript" src="/odoo_attendance_task_extended/static/src/js/greeting_message.js"/>
+            </xpath>
+        </template>
+
+        <record id="inherit_hr_attendance_form" model="ir.ui.view">
+            <field name="name">hr.attendance.inherit</field>
+            <field name="model">hr.attendance</field>
+            <field name="inherit_id" ref="hr_attendance.hr_attendance_view_form"/>
+            <field name="arch" type="xml">
+                <field name="check_out" position="after">
+                    <field name="attendance_task"/>
+                    <field name="hours_today" invisible="1"/>
+                </field>
+
+            </field>
+        </record>
+
+         <record id="view_attendance_tree_inh" model="ir.ui.view">
+            <field name="name">hr.attendance.tree.inh2</field>
+            <field name="model">hr.attendance</field>
+            <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+            <field name="arch" type="xml">
+                <field name="check_out" position="after">
+		            <field name="attendance_task" string="Task Details"/>
+                     <field name="worked_hours" widget="float_time" string="Hours"/>
+                     <field name="start_date" string="Dia de Imputacion"/>
+
+                </field>
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>

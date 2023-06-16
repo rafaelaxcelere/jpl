@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="change_task_wizard" model="ir.ui.view">
+        <field name="name">change.task.wizard.form</field>
+        <field name="model">change.task.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group col="3">
+                    <group>
+                        <field name="plant_id" class="oe_inline"/>
+                    </group>
+                    <group>
+                    </group>
+                    <group>
+                        <field name="pin" class="oe_inline"/>
+                    </group>
+                </group>
+                <group col="3">
+                    <group>
+                        <field name="from_task_id" class="oe_inline"/>
+                    </group>
+                    <group>
+                        <field name="to_task_id" class="oe_inline"/>
+                    </group>
+                    <group>
+                        <button name="make_change_task_wizard" string="Create task change" type="object"
+                                default_focus="1" class="oe_highlight"/>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </group>
+                </group>
+                <field name="employee_ids">
+                    <tree>
+                        <field name="name"/>
+                        <field name="work_phone"/>
+                        <field name="work_email"/>
+                        <field name="department_id"/>
+                        <field name="job_id"/>
+                        <field name="parent_id"/>
+                    </tree>
+                </field>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_change_task_wizard" model="ir.actions.act_window">
+        <field name="name">Change task</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">change.task.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="menu_change_task_wizard" name="Change task"
+              parent="hr_attendance.menu_hr_attendance_manage_attendances" action="action_change_task_wizard"
+              sequence="20" groups="hr_attendance.group_hr_attendance_user"/>
+
+
+</odoo>

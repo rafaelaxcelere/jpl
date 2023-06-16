@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_attendance_config_settings" model="ir.ui.view">
+            <field name="name">hr_attendance_import_csv settings</field>
+            <field name="model">hr_attendance_import_csv.config.settings</field>
+            <field name="arch" type="xml">
+                <form string="Configure CSV HR Attendance Importation" class="oe_form_configuration">
+                    <header>
+                        <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                        <button string="Cancel" type="object" name="cancel" class="oe_link" special="cancel"/>
+                    </header>
+                    <group string="Company" groups="base.group_multi_company">
+                        <label for="id" string="Company"/>
+                        <div>
+                            <div>
+                                <field name="company_id"
+                                    options="{'no_create': True}"
+                                    class="oe_inline"/>
+                            </div>
+                        </div>
+                    </group>
+                    <group string="Read CSV Configuration">
+                        <label for="id" string="Read csv and generate attendances"/>
+                        <div>
+                            <div>
+                                <field name="cron_id" invisible="1"/>
+                                <button type="object" name="test_read" string="Test read" class="oe_link btn-link"
+                                        attrs="{'invisible':[('hr_attendance_csv_path', '=', False)]}"/>
+
+                                <button type="object" name="execute_cron" string="Execute cron" class="oe_link btn-link"
+                                        attrs="{'invisible':[('cron_id', '=', False)]}"/>
+                            </div>
+                            <div>
+                                <label for="hr_attendance_csv_path"></label>
+                                <field name="hr_attendance_csv_path" placeholder="/home/my_user/attendances.csv"/>
+                            </div>
+                            <div>
+                                <label for="separator"/>
+                                <field name="separator" required="1" class="oe_inline"/>
+                            </div>
+                            <div>
+                                <label for="last_read_line_csv"/>
+                                <field name="last_read_line_csv"
+                                    class="oe_inline"/>
+                            </div>
+                            <div attrs="{'invisible':[('read_line_ids', '=', [])]}">
+                                <label for="read_line_ids"/>
+                                <field name="read_line_ids"
+                                       class="oe_inline" >
+                                    <tree>
+                                        <field name="barcode"/>
+                                        <field name="name"/>
+                                        <field name="check_in"/>
+                                        <field name="check_out"/>
+                                        <field name="attendance_task"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </div>
+                        <label for="id" string="Schedule configuration"/>
+                        <div>
+                            <div>
+                                <label for="interval_number"/>
+                                <field name="interval_number"
+                                    class="oe_inline"/>
+                            </div>
+                            <div>
+                                <label for="interval_type"/>
+                                <field name="interval_type"
+                                    class="oe_inline"/>
+                            </div>
+                            <div>
+                                <label for="nextcall"/>
+                                <field name="nextcall"
+                                    class="oe_inline"/>
+                            </div>
+                            <div>
+                                <label for="numbercall"/>
+                                <field name="numbercall"
+                                    class="oe_inline"/>
+                            </div>
+                            <div>
+                                <label for="doall"/>
+                                <field name="doall"
+                                    class="oe_inline"/>
+                            </div>
+                        </div>
+                    </group>
+                    <!-- <div> -->
+                        <!-- <span>(*) This configuration is related to the company you're logged into.</span> -->
+                    <!-- </div> -->
+                </form>
+            </field>
+        </record>
+
+        <record id="action_hr_attendance_csv_config" model="ir.actions.act_window">
+            <field name="name">Configure CSV Import Cron</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr_attendance_import_csv.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menu_hr_attendance_csv_config" name="Setting CSV import" parent="hr_attendance.menu_hr_attendance_settings" action="action_hr_attendance_csv_config" sequence="10" groups="base.group_system"/>
+
+
+
+    </data>
+</odoo>

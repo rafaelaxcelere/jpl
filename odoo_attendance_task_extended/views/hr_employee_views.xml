@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+       <!-- employee kanban view specifically for hr_attendance (to check in/out) -->
+        <record id="hr_employees_view_kanban_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.kanban</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr_attendance.hr_employees_view_kanban"/>
+        <field name="priority">99</field>
+            <field name="arch" type="xml">
+                <div class="oe_kanban_details" position="inside">
+                        <div class="text-muted">
+                            <field name="attendance_task" attrs="{'invisible': [('attendance_state', '=', 'checked_out')]}"/>
+                        </div>
+                </div>
+            </field>
+        </record>
+
+        <record id="view_employee_form_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <field name="calendar_id" position="after">
+                    <field name="tz" required="1"/>
+                </field>
+                <xpath expr="//form" position="attributes">
+                    <attribute name="delete">0</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_employee_tree_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.tree.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="delete">0</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_employee_filter_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.search</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='department_id']" position="after">
+                    <filter string="Checked In" name="is_check_in" domain="[('is_check_in','=',True)]"/>
+                    <filter string="Checked Out" name="is_check_in" domain="[('is_check_in','=',False)]"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

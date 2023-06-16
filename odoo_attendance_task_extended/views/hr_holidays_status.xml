@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+       <!-- employee kanban view specifically for hr_attendance (to check in/out) -->
+        <record id="view_holiday_status_form_inherit" model="ir.ui.view">
+            <field name="name">hr.holidays.status.form.inherit</field>
+            <field name="model">hr.holidays.status</field>
+            <field name="inherit_id" ref="hr_holidays.edit_holiday_status_form"/>
+            <field name="arch" type="xml">
+                <field name="active" position="after">
+                    <field name="x100_cost" required="1"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>
